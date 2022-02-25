@@ -1,0 +1,30 @@
+/* *
+{
+    box-sizing: border-box;
+}
+html
+{
+    font-family: sans-serif;
+    background-color: black;
+}
+body
+{
+    margin: 0;
+    color: whitesmoke;
+}
+input
+{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+    
+}
+ label
+{
+   padding: 130px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+} */
