@@ -72,7 +72,7 @@ function NumberGuessing()
                 <p>Message : {Msg}</p>
                 <p>Low or High : {LowHighMsg}</p>
                 <p>Total rounds played by user : {UserCount}</p>         {/*displaying total rounds played by user*/}
-                <p>Random Number : {randNum}</p>
+                {/* <p>Random Number : {randNum}</p> */}
                 <p>your guesses :
                     {UserAllGuessessVal.map((item,index)=>{                 //iterating over the array to display user guesses.
                         return <span key={index}> {item}, { }</span>    

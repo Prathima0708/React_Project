@@ -18,8 +18,7 @@ function App() {
   return (
     <div>
       <h1> Hello, world</h1>
-      <h1>hello</h1>
-
+     
 
        {/* {employees.filter(e => e.name !== "Priya").map((e) =>
         <Card name={e.name} role={e.role} />
@@ -30,9 +29,9 @@ function App() {
        {employees.map((e) => (
         <Card name={e.name} role={e.role} />
       ))}   */}
-
-      {/* <Form />
-      <Hook /> */}
+{/* 
+      <Form /> */}
+      <Hook />
       <NumberGuessing /> 
 
     </div>
