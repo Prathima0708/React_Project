@@ -62,6 +62,7 @@ import ExpensesList from './ExpensesList';
 
 
 import './Expenses.css';
+import ExpensesChart from './ExpensesChart';
 
 // function Expenses (props)  {
 
@@ -118,6 +119,7 @@ const Expenses=(props)=>
   return(
     <div className='expenses'>
     <ExpensesFilter onChangeFilter={filterChangeHandler} selected={filteredYear} />
+    {/* <ExpensesChart expenses={filteredExpenses} /> */}
 
     <ExpensesList items={filteredExpenses} />
 
