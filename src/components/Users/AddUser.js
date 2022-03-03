@@ -69,34 +69,36 @@ import Button from '../UI/Button';
 import ErrorModal from '../UI/ErrorModal';
 import classes from './AddUser.module.css';
 
+
 const AddUser = (props) => {
-  const [enteredUsername, setEnteredUsername] = useState('');
+  const [enteredUsername, setEnteredUsername] = useState('');  //state to collect user entered values
   const [enteredAge, setEnteredAge] = useState('');
-  const [error, setError] = useState();
+  const [error, setError] = useState();   //for managing error state
 
   const addUserHandler = (event) => {
     event.preventDefault();
-    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+    // console.log(enteredUsername,enteredAge)
+    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {    //trim method removes extra white spaces
       setError({
-        title: 'Invalid input',
+        title: 'Invalid Input',
         message: 'Please enter a valid name and age (non-empty values).',
       });
       return;
     }
-    if (+enteredAge < 1) {
+    if (+enteredAge < 1) {   //converting enetred age to number by + ,default it is string
       setError({
-        title: 'Invalid age',
+        title: 'Invalid Age',
         message: 'Please enter a valid age (> 0).',
       });
       return;
     }
     props.onAddUser(enteredUsername, enteredAge);
-    setEnteredUsername('');
+    setEnteredUsername('');  //restting the fields after the submission(while resetting value property needs to be added in input feild)
     setEnteredAge('');
   };
 
-  const usernameChangeHandler = (event) => {
-    setEnteredUsername(event.target.value);
+  const usernameChangeHandler = (event) => {    
+    setEnteredUsername(event.target.value);  //setting the user entered value through event obj
   };
 
   const ageChangeHandler = (event) => {
@@ -109,7 +111,7 @@ const AddUser = (props) => {
 
   return (
     <div>
-      {error && (
+      {error && (             //outputting conditionally
         <ErrorModal
           title={error.title}
           message={error.message}
@@ -132,8 +134,9 @@ const AddUser = (props) => {
             value={enteredAge}
             onChange={ageChangeHandler}
           />
-          <Button type="submit">Add User</Button>
+          <Button type="submit">Add User</Button>  {/*custom comp button*/}
         </form>
+        
       </Card>
     </div>
   );

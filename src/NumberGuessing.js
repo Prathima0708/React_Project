@@ -61,19 +61,19 @@ function NumberGuessing()
 
         <div>
             <h1>Number Guessing Game </h1>
-            <input disabled={Disabled} type="text" value={UserGuess} onChange={HandlerValueChange}/>
-            <br></br>
-            <button disabled={Disabled} onClick={SubmitHandler}>Submit</button>
+            <input disabled={Disabled} type="text" value={UserGuess} onChange={HandlerValueChange} style={{width :300,height:30,marginLeft:20 ,fontWeight:"bold",fontSize:19}}/>
+            <br></br><br></br>
+            <button disabled={Disabled} onClick={SubmitHandler} style={{width:100,height:40,cursor:"pointer", backgroundColor:"grey",color:"black",marginLeft:20,fontWeight:"bold" ,fontSize:19}}>Submit</button>
             {Disabled &&
-            <button  onClick={RestartAgain}>Start Again</button>} 
+            <button  onClick={RestartAgain} style={{marginLeft:20,width:150,height:40,cursor:"pointer",backgroundColor:"grey",color:"black",fontWeight:"bold",fontSize:19}}>Start Again</button>} 
 
 
             <div>
-                <p>Message : {Msg}</p>
-                <p>Low or High : {LowHighMsg}</p>
-                <p>Total rounds played by user : {UserCount}</p>         {/*displaying total rounds played by user*/}
-                <p>Random Number : {randNum}</p>
-                <p>your guesses :
+                <p style={{marginLeft:20 ,fontWeight:"bold"}}>Message : {Msg}</p>
+                <p style={{marginLeft:20 ,fontWeight:"bold"}}>Low or High : {LowHighMsg}</p>
+                <p style={{marginLeft:20,fontWeight:"bold"}}>Total rounds played by user : {UserCount}</p>         {/*displaying total rounds played by user*/}
+                <p style={{marginLeft:20,fontWeight:"bold"}}>Random Number : {randNum}</p>
+                <p style={{marginLeft:20,fontWeight:"bold"}}>Your guesses :
                     {UserAllGuessessVal.map((item,index)=>{                 //iterating over the array to display user guesses.
                         return <span key={index}> {item}, { }</span>    
                     }

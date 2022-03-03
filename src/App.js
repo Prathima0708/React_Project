@@ -49,7 +49,9 @@
 
 
 
-import React,{useState}from 'react';
+import React,{useState ,useEffect}from 'react';
+
+import Clock from './Clock';
 
 // import NewExpense from './components/NewExpense';
 import Expenses from './components/Expenses/Expenses';
@@ -70,7 +72,7 @@ const DUMMY_EXPENSES=[
     
   {
       id: 'e1',
-      title: 'Toilet Paper',
+      title: 'New Car',
       amount: 94.12,
       date: new Date(2020, 7, 14),
     },
@@ -102,10 +104,11 @@ const App=()=>
               });
       }
 
-      const [usersList, setUsersList] = useState([]);
+      
 
-  const addUserHandler = (uName, uAge) => {
-    setUsersList((prevUsersList) => {
+      const [usersList, setUsersList] = useState([]);
+      const addUserHandler = (uName, uAge) => {
+      setUsersList((prevUsersList) => {
       return [
         ...prevUsersList,
         { name: uName, age: uAge, id: Math.random().toString() },
@@ -113,19 +116,69 @@ const App=()=>
     });
   };
 
+
+
+  const [timerDays,setTimerDays]=useState()
+  const [timerHours,settimerHours]=useState()
+  const [timerMinutes,settimerMinutes]=useState()
+  const [timerSeconds,settimerSeconds]=useState()
+
+  let interval;
+
+  const startTimer=()=>
+  {
+    const countDownDate=new Date("Mar 9,2022").getTime();
+    interval=setInterval(()=>{
+      const now=new Date().getTime()
+      const distance=countDownDate-now
+
+      const days=Math.floor(distance/(24*60*60*1000))
+      
+      const hours=Math.floor((distance%(24*60*60*1000)) / (1000*60*60))
+
+      const minutes=Math.floor((distance%(60*60*1000)) / (1000*60))
+
+      const seconds=Math.floor((distance%(60*1000)) / 1000)
+
+      if(distance<0)
+      {
+        clearInterval(interval.current)
+      }
+      else
+      {
+        setTimerDays(days)
+        settimerHours(hours)
+        settimerMinutes(minutes)
+        settimerSeconds(seconds)
+      }
+    })
+  }
+
+useEffect(()=>{
+  startTimer()
+})
+
   return(
     <div>
       <h1>Adding New Expenses and filtering out by year</h1>
       <NewExpense onAddExpense={addExpenseHandler} />
     <Expenses items={expenses} />
+
     <h1>******************************************************</h1>
     <h1>Adding User form (with some validation)</h1>
-    <AddUser onAddUser={addUserHandler} />
+    <AddUser onAddUser={addUserHandler} />   {/*inside adduser componenet we should make use of onAddUser passed as a props here*/}
     
       <UsersList users={usersList} />
-      <h1>******************************************</h1>
+      <h1>************************************************</h1>
+      <h1>CountDown Timer</h1>
+
+     <Clock timerDays={timerDays} timerHours={timerHours} timerMinutes={timerMinutes} timerSeconds={timerSeconds} />
+      <h1>************************************************</h1>
       <NumberGuessing />
-   
+      {/* <div className="p-4">
+      <button className="bg-blue-500 text-white-500 p-7 rounded-lg">testing</button>
+      </div> */}
+     
     </div>
   )
 }
