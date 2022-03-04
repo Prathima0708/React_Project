@@ -60,7 +60,7 @@ function NumberGuessing()
     return(
 
         <div>
-            <h1>Number Guessing Game </h1>
+            <h1>4)Number Guessing Game </h1>
             <input disabled={Disabled} type="text" value={UserGuess} onChange={HandlerValueChange} style={{width :300,height:30,marginLeft:20 ,fontWeight:"bold",fontSize:19}}/>
             <br></br><br></br>
             <button disabled={Disabled} onClick={SubmitHandler} style={{width:100,height:40,cursor:"pointer", backgroundColor:"grey",color:"black",marginLeft:20,fontWeight:"bold" ,fontSize:19}}>Submit</button>

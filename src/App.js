@@ -51,10 +51,12 @@
 
 import React,{useState ,useEffect}from 'react';
 
+
 import Clock from './Clock';
 
 // import NewExpense from './components/NewExpense';
 import Expenses from './components/Expenses/Expenses';
+import Greetings from './components/Greetings';
 import NewExpense from './components/NewExpenses/NewExpense';
 import AddUser from './components/Users/AddUser';
 // import ExpenseItem from './components/ExpenseItem';
@@ -90,6 +92,8 @@ const DUMMY_EXPENSES=[
       date: new Date(2021, 5, 12),
     },
   ];
+
+  
 const App=()=>
 {
 
@@ -106,7 +110,7 @@ const App=()=>
 
       
 
-      const [usersList, setUsersList] = useState([]);
+      const [usersList, setUsersList] = useState([]);           //adding users
       const addUserHandler = (uName, uAge) => {
       setUsersList((prevUsersList) => {
       return [
@@ -118,7 +122,7 @@ const App=()=>
 
 
 
-  const [timerDays,setTimerDays]=useState()
+  const [timerDays,setTimerDays]=useState()                         //timer
   const [timerHours,settimerHours]=useState()
   const [timerMinutes,settimerMinutes]=useState()
   const [timerSeconds,settimerSeconds]=useState()
@@ -160,24 +164,30 @@ useEffect(()=>{
 
   return(
     <div>
-      <h1>Adding New Expenses and filtering out by year</h1>
+     
+      <h1>1)Adding New Expenses and filtering out by year :</h1>
       <NewExpense onAddExpense={addExpenseHandler} />
     <Expenses items={expenses} />
 
     <h1>******************************************************</h1>
-    <h1>Adding User form (with some validation)</h1>
+    <h1>2)Adding User form (with some validation):</h1>
     <AddUser onAddUser={addUserHandler} />   {/*inside adduser componenet we should make use of onAddUser passed as a props here*/}
     
       <UsersList users={usersList} />
       <h1>************************************************</h1>
-      <h1>CountDown Timer</h1>
+      <h1>3)CountDown Timer:</h1>
 
      <Clock timerDays={timerDays} timerHours={timerHours} timerMinutes={timerMinutes} timerSeconds={timerSeconds} />
-      <h1>************************************************</h1>
+      <h2>************************************************</h2>
       <NumberGuessing />
       {/* <div className="p-4">
       <button className="bg-blue-500 text-white-500 p-7 rounded-lg">testing</button>
       </div> */}
+
+<h1>***************************************************</h1>
+<h1>5)Displaying greeting based on time</h1>
+<Greetings />
+    
      
     </div>
   )
