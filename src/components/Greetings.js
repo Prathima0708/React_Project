@@ -10,12 +10,12 @@ function Greetings()
         greeting='Good Morning';
         cssStyle.color='green';
     }
-    else if(currDate >=12 && currDate<4)
+    else if(currDate >=12 && currDate<16)
     {
         greeting='Good Afternoon'
         cssStyle.color='Orange';
     }
-    else if(currDate >=4 && currDate<8)
+    else if(currDate >=16 && currDate<20)
     {
         greeting='Good Evening'
         cssStyle.color='Blue';
