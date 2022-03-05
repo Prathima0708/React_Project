@@ -1,0 +1,26 @@
+.number input
+{
+    width: 300px;
+    height: 30px;
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 19px;
+
+}
+.number button
+{
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    background-color: gray;
+    color: black;
+    font-weight: bold;
+    margin-left: 20px;
+    font-size: 19;
+
+}
+.msg p
+{
+    margin-left: 20px;
+    font-weight: bold;
+}
