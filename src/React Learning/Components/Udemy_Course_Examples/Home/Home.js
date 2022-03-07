@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Card from '../../../components/UI/Card/Card';
+import Card from '../UI/Card/Card';
 import classes from './Home.module.css';
 
 const Home = (props) => {
@@ -10,5 +10,4 @@ const Home = (props) => {
     </Card>
   );
 };
-
 export default Home;
