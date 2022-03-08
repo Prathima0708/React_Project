@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import Cart from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Cart/Cart";
 
-import Clock from "./React Learning/Components/Examples/Clock/Clock";
-import Calculator from "../src/React Learning/Components/Examples/Calculator/Calculator"
+
+import Header from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Header";
+import Meals from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Meals/Meals";
 
 
 const App = (props) => {
@@ -9,11 +11,14 @@ const App = (props) => {
   
 
   return (
-    <div>
-   <Calculator />
+    <Fragment>
+      <Cart />
+ <Header />
 
-
-    </div>
+<main>
+  <Meals />
+</main>
+    </Fragment>
   );
 };
 
