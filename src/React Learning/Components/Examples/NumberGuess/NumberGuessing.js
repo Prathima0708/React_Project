@@ -55,7 +55,7 @@ function NumberGuessing() {
       <h1>Number Guessing Game </h1>
       <input
         disabled={Disabled}
-        type="text"
+        type="number"
         value={UserGuess}
         onChange={HandlerValueChange}
       />
