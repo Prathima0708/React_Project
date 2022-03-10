@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
-import mealsImage from '../../../Udemy_Course_Examples/assets/meals.jpg'
+// import mealsImage from '../../../Udemy_Course_Examples/assets/meals.jpg'
+import mealsImage from '../../../assets/meals.jpg'
 import classes from './Header.module.css'
 import HeaderCartButton from './HeaderCartButton'
 
