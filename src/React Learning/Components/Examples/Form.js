@@ -1,29 +1,40 @@
 // import { useState } from "react";
 // import Card from "./Card";
 
-// function Form() {
-//   const [name, setName] = useState("Unknown");
-//   const [role, setRole] = useState("Developer");
+// function Form({name,setName}) {
+//   // const [name, setName] = useState("Unknown");
+//   // const [role, setRole] = useState("Developer");
 
-//   function changeName(event) {
-//     setName(event.target.value);
-//   }
+//   // function changeName(event) {
+//   //   setName(event.target.value);
+//   // }
 
-//   function changeRole(event) {
-//     setRole(event.target.value);
-//   }
+//   // function changeRole(event) {
+//   //   setRole(event.target.value);
+//   // }
 
 //   return (
 //     <div>
-//       <input onChange={changeName} type="text" value={name} />
+//       {/* <input onChange={changeName} type="text" value={name} />
 //       <input onChange={changeRole} type="text" value={role} />
 
-//       <Card name={name} role={role} />
+//       <Card name={name} role={role} /> */}
+
+//       <input onChange={(e)=>setName(e.target.value)} />
 //     </div>
 //   );
 // }
 
 // export default Form;
+
+
+
+
+
+
+// export default function Form({ id, setId }) {
+//   return <input onChange={(e) => setId(e.target.value)} type="text" value={id} />;
+// }
 
 
 import { useEffect, useState } from 'react';
@@ -49,23 +60,23 @@ useEffect(()=>{
 
 conatctList && console.log(conatctList)
   return (
-    <div className="bg-gray-100 min-h-0 ">
+    <div className="">
       <section>
         <form>
           <input
             placeholder="type here to fill..."
-            type="text"
-            className="ml-20 mt-5 rounded-md p-2"
+            type="text" onChange={(event)=>setFilterQuery(event.target.value)}
+            className="ml-20 mt-5 rounded-md p-2 border-2" 
           />
         </form>
       </section>
-      <section className="p-20 grid lg:grid-cols-4 gap-6">
+      <section className="grid gap-6 grid-cols-4 min-h-0 min-w-full ">
 
 
         {conatctList?.map((contact,index)=>(
-          <figure key={index} className="bg-white min-h-0 rounded-lg shadow-md pt-6  m-10">
-        <img src={contact.picture.large} alt="img" className="h-40 w-40 rounded-full mx-auto" />
-        <figcaption className="text-center mt-5">
+          <figure key={index} className="bg-white min-h-0 min-w-0 rounded-lg shadow-md pt-7 ">
+        <img src={contact.picture.large} alt="img" className="w-32 h-32 rounded-full mx-auto" />
+        <figcaption className="text-center mt-5 ">
 
           <p className="text-gray-700 font-semibold text-xl mb-2">
             {contact.name.first} {contact.name.last}
@@ -99,3 +110,14 @@ conatctList && console.log(conatctList)
   );
 };
 export default Form;
+
+
+
+
+
+
+
+
+
+
+
