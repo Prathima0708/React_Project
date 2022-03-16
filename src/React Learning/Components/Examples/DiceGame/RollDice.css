@@ -1,0 +1,33 @@
+.roll-dice{
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 100vh;
+    
+}
+.rolldice-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.roll-dice button{
+    align-self: center;
+    padding: 1em;
+    background-color: orchid;
+    width: 15em;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-top: 30px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+}
+.roll-dice button:hover{
+    background-color: darkslateblue;
+    color: black;
+}
+.roll-dice h2{
+    align-self: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}

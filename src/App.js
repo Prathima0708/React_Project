@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import "./App.css";
+// import "./App.css";
 import ContactList from "./React Learning/Components/Examples/ContactList";
 import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
 import SimpleInput from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/SimpleInput";
@@ -8,30 +8,30 @@ import Cart from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/La
 import Header from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Header/Header";
 import Meals from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Meals/Meals";
 import CartProvider from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Store/CartProvider";
+import RollDice from "./React Learning/Components/Examples/DiceGame/RollDice";
 
 const App = (props) => {
-  // const [cartIsShown, setCartIsShown] = useState(false);
-  // const showCartHandler = () => {
-  //   setCartIsShown(true);
-  // };
-  // const hideCartHandler = () => {
-  //   setCartIsShown(false);
-  // };
+  const [cartIsShown, setCartIsShown] = useState(false);
+  const showCartHandler = () => {
+    setCartIsShown(true);
+  };
+  const hideCartHandler = () => {
+    setCartIsShown(false);
+  };
 
   return (
-    // <CartProvider>
-    //   {cartIsShown && <Cart onClose={hideCartHandler} />}
-    //   <Header onShowCart={showCartHandler} />
+    <CartProvider>
+      {cartIsShown && <Cart onClose={hideCartHandler} />}
+      <Header onShowCart={showCartHandler} />
 
-    //   <main>
-    //     <Meals />
+      <main>
+        <Meals />
         
-    //   </main>
+      </main>
       
-    // </CartProvider>
-    <div className="app">
-    <BasicForm />
-  </div>
+    </CartProvider>
+   
+   
   );
 };
 
