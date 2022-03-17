@@ -7,6 +7,7 @@ import Cart from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/La
 import Header from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Header/Header";
 import Meals from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Meals/Meals";
 import CartProvider from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Store/CartProvider";
+import Counter from "./React Learning/Components/Udemy_Course_Examples/Redux/Counter";
 // import RollDice from "./React Learning/Components/Examples/DiceGame/RollDice";
 
 const App = (props) => {
@@ -19,16 +20,18 @@ const App = (props) => {
   };
 
   return (
-    <CartProvider>
-      {cartIsShown && <Cart onClose={hideCartHandler} />}
-      <Header onShowCart={showCartHandler} />
+    // <CartProvider>
+    //   {cartIsShown && <Cart onClose={hideCartHandler} />}
+    //   <Header onShowCart={showCartHandler} />
 
-      <main>
-        <Meals />
+    //   <main>
+    //     <Meals />
         
-      </main>
+    //   </main>
       
-    </CartProvider>
+    // </CartProvider>
+
+    <Counter />
 
    
   
