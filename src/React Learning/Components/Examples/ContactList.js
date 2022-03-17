@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import useFetch from 'react-fetch-hook'
-import imgr from "./assets/a1.jpg";
+// import imgr from "./assets/a1.jpg";
 const ContactList = () => {
 
 const url="https://randomuser.me/api"

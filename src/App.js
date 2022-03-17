@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 // import "./App.css";
-import ContactList from "./React Learning/Components/Examples/ContactList";
 import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
-import SimpleInput from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/SimpleInput";
-import BasicForm from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/BasicForm";
+// import SimpleInput from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/SimpleInput";
+// import BasicForm from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/BasicForm";
 import Cart from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Cart/Cart";
 import Header from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Header/Header";
 import Meals from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Meals/Meals";
 import CartProvider from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Store/CartProvider";
-import RollDice from "./React Learning/Components/Examples/DiceGame/RollDice";
+// import RollDice from "./React Learning/Components/Examples/DiceGame/RollDice";
 
 const App = (props) => {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -30,7 +29,9 @@ const App = (props) => {
       </main>
       
     </CartProvider>
+
    
+  
    
   );
 };
