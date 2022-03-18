@@ -4,7 +4,7 @@ import useFetch from 'react-fetch-hook'
 const ContactList = () => {
 
 const url="https://randomuser.me/api"
-const {isLoading,data,error}=useFetch(url+'?results=10')
+const {isLoading,data,error}=useFetch(url+'?results=20')
 // data && console.log(data)
 const [conatctList,setConatctList]=useState(null)
 const [filterquery,setFilterQuery]=useState(null)

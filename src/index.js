@@ -6,10 +6,13 @@ import {Provider} from 'react-redux'
 import store from './React Learning/Components/Udemy_Course_Examples/Redux/Store/index'
 
 
+
 ReactDOM.render(
   // <React.StrictMode> 
-  <Provider store={store} >
+   <Provider store={store} >
+ 
     <App />
+   
    {/* </React.StrictMode>, */}
   </Provider>,
   document.getElementById('root')
