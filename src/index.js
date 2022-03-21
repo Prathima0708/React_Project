@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {Provider} from 'react-redux'
-import store from './React Learning/Components/Udemy_Course_Examples/Redux/Store/index'
+import store from './React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/index'
 
 
 

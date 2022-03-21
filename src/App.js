@@ -1,18 +1,28 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
-import "./App.css";
-import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
+// import "./App.css";
+// import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
 
 // import SimpleInput from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/SimpleInput";
 // import BasicForm from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/BasicForm";
-import Cart from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Cart/Cart";
-import Header from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Header/Header";
-import Meals from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Meals/Meals";
-import CartProvider from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Store/CartProvider";
-import Counter from "./React Learning/Components/Udemy_Course_Examples/Redux/Counter";
-import Navbar from "./React Learning/Components/Examples/Website/components/Navbar";
-// import RollDice from "./React Learning/Components/Examples/DiceGame/RollDice";
+import Cart from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Cart/Cart"
+import Layout from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Layout/Layout";
+import Products from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Shop/Products";
+// import Header from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Header/Header"
+// import Meals from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Meals/Meals";
+// import CartProvider from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Store/CartProvider";
+// import Counter from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Counter/Counter";
+// import Navbar from "./React Learning/Components/Examples/Website/components/Navbar";
+// import Form from "./React Learning/Components/Examples/Form"
+// import Card from "./React Learning/Components/Examples/Card"
+import { useSelector } from "react-redux";
+import Game from "./React Learning/Components/Examples/Tic Tac Toe/Game";
+
 
 const App = (props) => {
+  
+  
+ 
+  
   // const [cartIsShown, setCartIsShown] = useState(false);
   // const showCartHandler = () => {
   //   setCartIsShown(true);
@@ -32,15 +42,15 @@ const App = (props) => {
     //   </main>
       
     // </CartProvider>
-<Fragment>
-    <Counter/>
-    </Fragment>
+    <Game />
 
+  );
+}
    
   
    
-  );
-};
+  
+
 
 export default App;
 
