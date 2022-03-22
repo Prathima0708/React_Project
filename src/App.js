@@ -1,12 +1,13 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 // import "./App.css";
 // import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
+import { Route, Switch,Redirect } from "react-router-dom";
 
 // import SimpleInput from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/SimpleInput";
 // import BasicForm from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/BasicForm";
-import Cart from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Cart/Cart"
+import Cart from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Cart/Cart";
 import Layout from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Layout/Layout";
-import Products from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Shop/Products";
+
 // import Header from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Header/Header"
 // import Meals from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Meals/Meals";
 // import CartProvider from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Store/CartProvider";
@@ -16,13 +17,12 @@ import Products from "./React Learning/Components/Udemy_Course_Examples/Redux/Ex
 // import Card from "./React Learning/Components/Examples/Card"
 import { useSelector } from "react-redux";
 import Game from "./React Learning/Components/Examples/Tic Tac Toe/Game";
-
+import Welcome from "./React Learning/Components/Udemy_Course_Examples/Routing/Pages/Welcome";
+import Products from "./React Learning/Components/Udemy_Course_Examples/Routing/Pages/Products";
+import MainHeader from "./React Learning/Components/Udemy_Course_Examples/Routing/Components/MainHeader";
+import ProductDetail from "./React Learning/Components/Udemy_Course_Examples/Routing/Pages/ProductDetail";
 
 const App = (props) => {
-  
-  
- 
-  
   // const [cartIsShown, setCartIsShown] = useState(false);
   // const showCartHandler = () => {
   //   setCartIsShown(true);
@@ -38,51 +38,18 @@ const App = (props) => {
 
     //   <main>
     //     <Meals />
-        
+
     //   </main>
-      
+
     // </CartProvider>
-    <Game />
-
+    <div>
+      <Game />
+   
+    </div>
   );
-}
-   
-  
-   
-  
-
+};
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const App = (props) => {
 
