@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 // import {Provider} from 'react-redux'
 // import store from './React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/index'
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, Routes} from 'react-router-dom'
 
 
 
@@ -22,11 +22,12 @@ import {BrowserRouter} from 'react-router-dom'
 
 ReactDOM.render(
   // <React.StrictMode> 
-  
- <BrowserRouter>
+  <BrowserRouter>
+
     <App />
    
    {/* </React.StrictMode>, */}
+ 
    </BrowserRouter>,
   document.getElementById('root')
 );

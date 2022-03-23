@@ -1,12 +1,12 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 // import "./App.css";
-// import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
-import { Route, Switch,Redirect } from "react-router-dom";
+import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
+import { Navigate, Route, Router, Routes } from "react-router-dom";
 
 // import SimpleInput from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/SimpleInput";
 // import BasicForm from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/BasicForm";
 import Cart from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Cart/Cart";
-import Layout from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Layout/Layout";
+import Layout from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-2/Components/Layout/Layout"
 
 // import Header from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Header/Header"
 // import Meals from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Meals/Meals";
@@ -17,10 +17,11 @@ import Layout from "./React Learning/Components/Udemy_Course_Examples/Redux/Exam
 // import Card from "./React Learning/Components/Examples/Card"
 import { useSelector } from "react-redux";
 import Game from "./React Learning/Components/Examples/Tic Tac Toe/Game";
-import Welcome from "./React Learning/Components/Udemy_Course_Examples/Routing/Pages/Welcome";
-import Products from "./React Learning/Components/Udemy_Course_Examples/Routing/Pages/Products";
-import MainHeader from "./React Learning/Components/Udemy_Course_Examples/Routing/Components/MainHeader";
-import ProductDetail from "./React Learning/Components/Udemy_Course_Examples/Routing/Pages/ProductDetail";
+import Welcome from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Pages/Welcome";
+import Products from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Pages/Products";
+import MainHeader from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Components/MainHeader";
+import ProductDetail from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Pages/ProductDetail";
+
 
 const App = (props) => {
   // const [cartIsShown, setCartIsShown] = useState(false);
@@ -43,13 +44,94 @@ const App = (props) => {
 
     // </CartProvider>
     <div>
-      <Game />
-   
-    </div>
+    <MainHeader />
+    <main>
+      <Routes>
+        <Route path="/" element={<Navigate  to="/welcome"/> } />
+        <Route path='/welcome/*' element={<Welcome />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/products/:productId' element={<ProductDetail />} />
+      </Routes>
+    </main>
+  </div>
+ 
   );
 };
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const App = (props) => {
 
