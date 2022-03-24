@@ -25,13 +25,18 @@ const QuoteForm = (props) => {
     setIsEntering(true);
   };
 
-  const finishEnteringHandler=()=>{
-      setIsEntering(false)
-  }
+  const finishEnteringHandler = () => {
+    setIsEntering(false);
+  };
 
   return (
     <Fragment>
-        <Prompt when={isEntering} message={(loacation)=>'Are you sure you want to leave? All your data will be lost!'} />
+      <Prompt
+        when={isEntering}
+        message={(loacation) =>
+          "Are you sure you want to leave? All your data will be lost!"
+        }
+      />
       <Card>
         <form
           onFocus={formFocusHandler}
@@ -53,7 +58,9 @@ const QuoteForm = (props) => {
             <textarea id="text" rows="5" ref={textInputRef}></textarea>
           </div>
           <div className={classes.actions}>
-            <button onClick={finishEnteringHandler} className="btn">Add Quote</button>
+            <button onClick={finishEnteringHandler} className="btn">
+              Add Quote
+            </button>
           </div>
         </form>
       </Card>

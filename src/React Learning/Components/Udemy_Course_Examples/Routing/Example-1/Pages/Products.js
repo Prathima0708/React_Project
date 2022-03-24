@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Products = () => {
+  
   return (
     <section>
       <h1>The Products page</h1>

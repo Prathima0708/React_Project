@@ -1,7 +1,7 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 // import "./App.css";
 import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
-import { Navigate, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Router, Routes } from "react-router-dom";
 
 // import SimpleInput from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/SimpleInput";
 // import BasicForm from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/BasicForm";
@@ -21,6 +21,13 @@ import Welcome from "./React Learning/Components/Udemy_Course_Examples/Routing/E
 import Products from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Pages/Products";
 import MainHeader from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Components/MainHeader";
 import ProductDetail from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Pages/ProductDetail";
+import Navbar from "./React Learning/Components/Examples/Website/components/Navbar/Navbar";
+import { Home } from "./React Learning/Components/Examples/ContactApp/Pages/Home";
+import { AddEdit } from "./React Learning/Components/Examples/ContactApp/Pages/AddEdit";
+import { View } from "./React Learning/Components/Examples/ContactApp/Pages/View";
+import { About } from "./React Learning/Components/Examples/ContactApp/Pages/About";
+import { Header } from "./React Learning/Components/Examples/ContactApp/component/Header/Header";
+
 
 
 const App = (props) => {
@@ -43,18 +50,17 @@ const App = (props) => {
     //   </main>
 
     // </CartProvider>
-    <div>
-    <MainHeader />
-    <main>
-      <Routes>
-        <Route path="/" element={<Navigate  to="/welcome"/> } />
-        <Route path='/welcome/*' element={<Welcome />} />
-        <Route path='/products' element={<Products />} />
-        <Route path='/products/:productId' element={<ProductDetail />} />
-      </Routes>
-    </main>
-  </div>
- 
+<>
+<Header />
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/add" element={<AddEdit />} />
+  <Route path="/update/:id" element={<AddEdit />} />
+  <Route path="/view/:id" element={<View />} />
+  <Route path="/about" element={<About />} />
+  </Routes>
+  </>
+
   );
 };
 
