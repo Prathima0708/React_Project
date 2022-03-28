@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useContext, useEffect, useState } from "react";
 // import "./App.css";
 import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
 import { BrowserRouter, Navigate, Route, Router, Routes } from "react-router-dom";
@@ -6,27 +6,20 @@ import { BrowserRouter, Navigate, Route, Router, Routes } from "react-router-dom
 // import SimpleInput from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/SimpleInput";
 // import BasicForm from "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/BasicForm";
 import Cart from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Cart/Cart";
-import Layout from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-2/Components/Layout/Layout"
+
 
 // import Header from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Header/Header"
 // import Meals from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Layout/Meals/Meals";
 // import CartProvider from "./React Learning/Components/Udemy_Course_Examples/FoodOrder/Store/CartProvider";
 // import Counter from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Counter/Counter";
 // import Navbar from "./React Learning/Components/Examples/Website/components/Navbar";
-// import Form from "./React Learning/Components/Examples/Form"
-// import Card from "./React Learning/Components/Examples/Card"
-import { useSelector } from "react-redux";
-import Game from "./React Learning/Components/Examples/Tic Tac Toe/Game";
-import Welcome from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Pages/Welcome";
-import Products from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Pages/Products";
-import MainHeader from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Components/MainHeader";
-import ProductDetail from "./React Learning/Components/Udemy_Course_Examples/Routing/Example-1/Pages/ProductDetail";
-import Navbar from "./React Learning/Components/Examples/Website/components/Navbar/Navbar";
-import { Home } from "./React Learning/Components/Examples/ContactApp/Pages/Home";
-import { AddEdit } from "./React Learning/Components/Examples/ContactApp/Pages/AddEdit";
-import { View } from "./React Learning/Components/Examples/ContactApp/Pages/View";
-import { About } from "./React Learning/Components/Examples/ContactApp/Pages/About";
-import { Header } from "./React Learning/Components/Examples/ContactApp/component/Header/Header";
+import Form from "./React Learning/Components/Examples/Form"
+import Card from "./React Learning/Components/Examples/Card"
+import HomePage from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/pages/HomePage";
+import AuthPage from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/pages/AuthPage";
+import UserProfile from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/components/profile/UserProfile";
+import Layout from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/components/layout/Layout";
+import AuthContext from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/store/auth-context";
 
 
 
@@ -38,7 +31,7 @@ const App = (props) => {
   // const hideCartHandler = () => {
   //   setCartIsShown(false);
   // };
-
+ const authCtx=useContext(AuthContext)
   return (
     // <CartProvider>
     //   {cartIsShown && <Cart onClose={hideCartHandler} />}
@@ -50,7 +43,7 @@ const App = (props) => {
     //   </main>
 
     // </CartProvider>
-<>
+/* <>
 <Header />
 <Routes>
   <Route path="/" element={<Home />} />
@@ -59,7 +52,18 @@ const App = (props) => {
   <Route path="/view/:id" element={<View />} />
   <Route path="/about" element={<About />} />
   </Routes>
-  </>
+  </> */
+
+
+  <Layout>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+      {!authCtx.isLoggedIn &&   <Route path='/auth' element={<AuthPage />} /> }
+      {authCtx.isLoggedIn &&   <Route path='/profile' element={<UserProfile />} /> }
+     {!authCtx.isLoggedIn && <Route path="/" element={<Navigate to='/auth' />} />}
+      <Route path="*" element={<Navigate to='/' />} />
+      </Routes>
+    </Layout>
 
   );
 };

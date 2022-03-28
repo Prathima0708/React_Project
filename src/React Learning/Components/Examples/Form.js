@@ -1,4 +1,5 @@
-// import { useState } from "react";
+import { useState } from "react";
+import Card from "./Card";
 // import Card from "./Card";
 
 // function Form({name,setName}) {
@@ -35,6 +36,36 @@
 export default function Form({ id, setId }) {
   return <input onChange={(e) => setId(e.target.value)} type="text" value={id} />;
 }
+
+
+
+
+// function Form(){
+
+
+//     let [text,setText]= useState("");
+//     let [state,setState]= useState(false);
+    
+//     function handle(e){
+       
+//         setText(e.target.value);
+        
+//     }
+//     function handle1(){
+//       setState(true);
+//     }
+
+//     return(
+//         <div>
+//          {state ? <Card value={text}/>: ""}
+//             <input type="text" onChange={handle}   ></input>
+//             <button type='button' onClick={handle1} >Send Here</button>
+        
+//         </div>
+//     )
+// }
+
+// export default Form
 
 
 

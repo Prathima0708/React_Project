@@ -5,6 +5,7 @@ import App from './App';
 // import {Provider} from 'react-redux'
 // import store from './React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/index'
 import {BrowserRouter, Routes} from 'react-router-dom'
+import {AuthContextProvider} from './React Learning/Components/Udemy_Course_Examples/Authentication Section/store/auth-context'
 
 
 
@@ -22,13 +23,15 @@ import {BrowserRouter, Routes} from 'react-router-dom'
 
 ReactDOM.render(
   // <React.StrictMode> 
+  <AuthContextProvider>
   <BrowserRouter>
 
     <App />
    
    {/* </React.StrictMode>, */}
  
-   </BrowserRouter>,
+   </BrowserRouter>
+   </AuthContextProvider>,
   document.getElementById('root')
 );
 

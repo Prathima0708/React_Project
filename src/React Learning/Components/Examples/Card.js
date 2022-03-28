@@ -1,4 +1,4 @@
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // import '../../../App.css'
 
 // function Card({ name, role }) {
@@ -28,7 +28,7 @@
 
 
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import '../../../App.css'
 
 function Card({ id }) {
@@ -55,3 +55,15 @@ function Card({ id }) {
 export default Card;
 
 
+
+// function Card(props){
+  
+//   return(
+//       <div>
+//           <p>{props.value}</p>
+          
+//       </div>
+
+//   )
+// }
+// export default Card
