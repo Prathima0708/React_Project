@@ -1,16 +1,20 @@
-import React, {  useContext } from "react";
+import React, {  useContext, useState ,Component} from "react";
 import "./App.css";
 import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
 import {  Navigate, Route, Routes } from "react-router-dom";
+import Modal from "./React Learning/Components/Udemy_Course_Examples/AnimatingReactApps/Modal/Modal"
+import Backdrop from "./React Learning/Components/Udemy_Course_Examples/AnimatingReactApps/Backdrop/Backdrop"
 
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import { Home } from "./React Learning/Components/Examples/ContactApp/components/pages/Home";
-import { About } from "./React Learning/Components/Examples/ContactApp/components/pages/About";
-import { Contact } from "./React Learning/Components/Examples/ContactApp/components/pages/Contact";
-import  Navbar  from "./React Learning/Components/Examples/ContactApp/components/Layout/Navbar";
+import List from "./React Learning/Components/Udemy_Course_Examples/AnimatingReactApps/List/List"
 
-// import Form from "./React Learning/Components/Examples/Form"
-// import Card from "./React Learning/Components/Examples/Card"
+// import '../node_modules/bootstrap/dist/css/bootstrap.css'
+// import { Home } from "./React Learning/Components/Examples/ContactApp/components/pages/Home";
+// import { About } from "./React Learning/Components/Examples/ContactApp/components/pages/About";
+// import { Contact } from "./React Learning/Components/Examples/ContactApp/components/pages/Contact";
+// import  Navbar  from "./React Learning/Components/Examples/ContactApp/components/Layout/Navbar";
+
+import Form from "./React Learning/Components/Examples/Form"
+import Card from "./React Learning/Components/Examples/Card"
 // import HomePage from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/pages/HomePage";
 // import AuthPage from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/pages/AuthPage";
 // import UserProfile from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/components/profile/UserProfile";
@@ -19,8 +23,10 @@ import  Navbar  from "./React Learning/Components/Examples/ContactApp/components
 
 
 
+
 const App = (props) => {
   // const [cartIsShown, setCartIsShown] = useState(false);
+  
   // const showCartHandler = () => {
   //   setCartIsShown(true);
   // };
@@ -28,6 +34,7 @@ const App = (props) => {
   //   setCartIsShown(false);
   // };
 //  const authCtx=useContext(AuthContext)
+const [id, setId] = useState(1);
   return (
     // <CartProvider>
     //   {cartIsShown && <Cart onClose={hideCartHandler} />}
@@ -50,20 +57,14 @@ const App = (props) => {
   //     {/* <Route path="*" element={<Navigate to='/' />} /> */}
   //     </Routes>
   //   </Layout>
+<div>
+
+<h1>Employees Details</h1>
+      <Form id={id} setId={setId} />
+      <Card id={id} />
+</div>
 
 
-  <div>
-    <Routes>
-
-    <Route path="/" element={<Navbar />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-    </Routes>
-   
-    
-  
-  </div>
 
   );
 };
@@ -73,7 +74,7 @@ export default App;
 
 
 
-
+  
 
 
 
