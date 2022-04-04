@@ -50,7 +50,9 @@ function Card({ id }) {
       <div>Name: {data?.title}</div>
     </div>
   );
+
 }
+
 
 export default Card;
 

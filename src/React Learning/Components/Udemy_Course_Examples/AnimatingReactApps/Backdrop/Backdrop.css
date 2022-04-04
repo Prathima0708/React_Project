@@ -7,9 +7,12 @@
     height: 100%;
     background-color: rgba(0,0,0,0.8);
 }
-.backdropopen{
-    display:block;
+
+
+.BackdropOpen {
+    display: block;
 }
-.backdropclosed{
-    display:none;
+
+.BackdropClosed {
+    display: none;
 }

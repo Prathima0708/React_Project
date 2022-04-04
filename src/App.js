@@ -1,63 +1,55 @@
-import React, {  useContext, useState ,Component} from "react";
+import React, { useContext, useState, Component } from "react";
 import "./App.css";
-import './React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css'
-import {  Navigate, Route, Routes } from "react-router-dom";
-import Modal from "./React Learning/Components/Udemy_Course_Examples/AnimatingReactApps/Modal/Modal"
-import Backdrop from "./React Learning/Components/Udemy_Course_Examples/AnimatingReactApps/Backdrop/Backdrop"
-
-import List from "./React Learning/Components/Udemy_Course_Examples/AnimatingReactApps/List/List"
+import "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Transition from "react-transition-group/Transition";
 
 // import '../node_modules/bootstrap/dist/css/bootstrap.css'
-// import { Home } from "./React Learning/Components/Examples/ContactApp/components/pages/Home";
-// import { About } from "./React Learning/Components/Examples/ContactApp/components/pages/About";
-// import { Contact } from "./React Learning/Components/Examples/ContactApp/components/pages/Contact";
-// import  Navbar  from "./React Learning/Components/Examples/ContactApp/components/Layout/Navbar";
 
-import Form from "./React Learning/Components/Examples/Form"
-import Card from "./React Learning/Components/Examples/Card"
+import Form from "./React Learning/Components/Examples/Form";
+import Card from "./React Learning/Components/Examples/Card";
 // import HomePage from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/pages/HomePage";
 // import AuthPage from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/pages/AuthPage";
 // import UserProfile from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/components/profile/UserProfile";
 // import Layout from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/components/layout/Layout";
 // import AuthContext from "./React Learning/Components/Udemy_Course_Examples/Authentication Section/store/auth-context";
+import Modal from "./React Learning/Components/Udemy_Course_Examples/AnimatingReactApps/Modal/Modal";
+import Backdrop from "./React Learning/Components/Udemy_Course_Examples/AnimatingReactApps/Backdrop/Backdrop";
+import List from "./React Learning/Components/Udemy_Course_Examples/AnimatingReactApps/List/List";
 
+// const App = (props) => {
+// const [cartIsShown, setCartIsShown] = useState(false);
 
-
-
-const App = (props) => {
-  // const [cartIsShown, setCartIsShown] = useState(false);
-  
-  // const showCartHandler = () => {
-  //   setCartIsShown(true);
-  // };
-  // const hideCartHandler = () => {
-  //   setCartIsShown(false);
-  // };
+// const showCartHandler = () => {
+//   setCartIsShown(true);
+// };
+// const hideCartHandler = () => {
+//   setCartIsShown(false);
+// };
 //  const authCtx=useContext(AuthContext)
-const [id, setId] = useState(1);
-  return (
-    // <CartProvider>
-    //   {cartIsShown && <Cart onClose={hideCartHandler} />}
-    //   <Header onShowCart={showCartHandler} />
+// const [id, setId] = useState(1);
+//   return (
+// <CartProvider>
+//   {cartIsShown && <Cart onClose={hideCartHandler} />}
+//   <Header onShowCart={showCartHandler} />
 
-    //   <main>
-    //     <Meals />
+//   <main>
+//     <Meals />
 
-    //   </main>
+//   </main>
 
-    // </CartProvider>
+// </CartProvider>
 
-
-  // <Layout>
-  //     <Routes>
-  //       <Route path='/' element={<HomePage />} />
-  //     {!authCtx.isLoggedIn &&   <Route path='/auth' element={<AuthPage />} /> }
-  //     {authCtx.isLoggedIn &&   <Route path='/profile' element={<UserProfile />} /> }
-  //    {!authCtx.isLoggedIn && <Route path="*" element={<Navigate to='/auth' />} />}
-  //     {/* <Route path="*" element={<Navigate to='/' />} /> */}
-  //     </Routes>
-  //   </Layout>
-<div>
+// <Layout>
+//     <Routes>
+//       <Route path='/' element={<HomePage />} />
+//     {!authCtx.isLoggedIn &&   <Route path='/auth' element={<AuthPage />} /> }
+//     {authCtx.isLoggedIn &&   <Route path='/profile' element={<UserProfile />} /> }
+//    {!authCtx.isLoggedIn && <Route path="*" element={<Navigate to='/auth' />} />}
+//     {/* <Route path="*" element={<Navigate to='/' />} /> */}
+//     </Routes>
+//   </Layout>
+/* <div>
 
 <h1>Employees Details</h1>
       <Form id={id} setId={setId} />
@@ -69,80 +61,78 @@ const [id, setId] = useState(1);
   );
 };
 
+export default App; */
+
+class App extends Component {
+  state = {
+    modalIsOpen: false,
+    showBlock: false,
+  };
+
+  showModal = () => {
+    this.setState({ modalIsOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <h1>React Animations</h1>
+        <button
+          onClick={() =>
+            this.setState((prevState) => ({ showBlock: !prevState.showBlock }))
+          }
+        >
+          Toggle
+        </button>
+        <br></br>
+        <Transition
+          in={this.state.showBlock}
+          timeout={1000}
+          mountOnEnter
+          unmountOnExit
+          onEnter={()=>console.log('On enter')}
+          onEntering={()=>console.log('On entering')}
+          onEntered={()=>console.log('on entered')}
+          onExit={()=>console.log('on exit')}
+          onExiting={()=>console.log('on exiting')}
+          onExited={()=>console.log('on exited')}
+        >
+          {(state) => (
+            <p>
+              <div
+                style={{
+                  backgroundColor: "red",
+                  width: 100,
+                  height: 100,
+                  margin: "auto",
+                  transition: "opacity 1s ease-out",
+                  opacity: state === "exiting" ? 0 : 1,
+                }}
+              ></div>
+            </p>
+          )}
+        </Transition>
+
+        <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
+
+        {this.state.modalIsOpen ? (
+          <Backdrop show={this.state.modalIsOpen} />
+        ) : null}
+        <button className="Button" onClick={this.showModal}>
+          Open Modal
+        </button>
+        <h3>Animating Lists</h3>
+        <List />
+      </div>
+    );
+  }
+}
+
 export default App;
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const App = (props) => {
 
