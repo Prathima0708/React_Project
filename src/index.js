@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-// import {Provider} from 'react-redux'
+import {Provider} from 'react-redux'
 // import store from './React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/index'
 import {BrowserRouter, Routes} from 'react-router-dom'
-import {AuthContextProvider} from './React Learning/Components/Udemy_Course_Examples/Authentication Section/store/auth-context'
+import ProductsProvider from "./React Learning/Components/Udemy_Course_Examples/ReplacingRedux/context/products-context"
 
 
 
@@ -23,7 +23,7 @@ import {AuthContextProvider} from './React Learning/Components/Udemy_Course_Exam
 
 ReactDOM.render(
   // <React.StrictMode> 
-  <AuthContextProvider>
+  <ProductsProvider>
   <BrowserRouter>
 
     <App />
@@ -31,7 +31,7 @@ ReactDOM.render(
    {/* </React.StrictMode>, */}
  
    </BrowserRouter>
-   </AuthContextProvider>,
+   </ProductsProvider>,
   document.getElementById('root')
 );
 
