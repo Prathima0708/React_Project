@@ -6,34 +6,23 @@ import {Provider} from 'react-redux'
 // import store from './React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/index'
 import {BrowserRouter, Routes} from 'react-router-dom'
 import ProductsProvider from "./React Learning/Components/Udemy_Course_Examples/ReplacingRedux/context/products-context"
+import AuthContextProvider from './React Learning/Components/Udemy_Course_Examples/Section28/components/context/auth-context';
 
-
-
-// ReactDOM.render(
-//   // <React.StrictMode> 
-//    <Provider store={store} >
- 
-//     <App />
-   
-//    {/* </React.StrictMode>, */}
-//   </Provider>,
-//   document.getElementById('root')
-// );
 
 
 ReactDOM.render(
   // <React.StrictMode> 
-  <ProductsProvider>
-  <BrowserRouter>
-
+   <AuthContextProvider>
+ 
     <App />
    
    {/* </React.StrictMode>, */}
- 
-   </BrowserRouter>
-   </ProductsProvider>,
+   </AuthContextProvider> ,
   document.getElementById('root')
 );
+
+
+
 
 
 

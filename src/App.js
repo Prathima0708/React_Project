@@ -9,6 +9,8 @@ import Transition from "react-transition-group/Transition";
 import Form from "./React Learning/Components/Examples/Form";
 import Card from "./React Learning/Components/Examples/Card";
 import Ingredients from "./React Learning/Components/Udemy_Course_Examples/Section28/components/Ingredients/Ingredients";
+import Auth from "./React Learning/Components/Udemy_Course_Examples/Section28/components/Auth";
+import { AuthContext } from "./React Learning/Components/Udemy_Course_Examples/Section28/components/context/auth-context";
 
 const App = (props) => {
 // const [cartIsShown, setCartIsShown] = useState(false);
@@ -20,7 +22,13 @@ const App = (props) => {
 //   setCartIsShown(false);
 // };
 //  const authCtx=useContext(AuthContext)
-const [id, setId] = useState(1);
+
+const authCtx=useContext(AuthContext)
+let content=<Auth />
+if(authCtx.isAuth){
+content=<Ingredients />
+}
+
   return (
 
 // <CartProvider>
@@ -44,7 +52,8 @@ const [id, setId] = useState(1);
 
 
  <div>
-   <Ingredients />;
+  
+{content}
    </div>
 
 
