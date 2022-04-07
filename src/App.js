@@ -1,76 +1,69 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css";
-import { Navigate, Route, Routes } from "react-router-dom";
-import Transition from "react-transition-group/Transition";
+import "./React Learning/Components/Udemy_Course_Examples/Section 29/components/index.css"
+// import { Navigate, Route, Routes } from "react-router-dom";
 
 // import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
-import Form from "./React Learning/Components/Examples/Form";
-import Card from "./React Learning/Components/Examples/Card";
+// import Form from "./React Learning/Components/Examples/Form";
+// import Card from "./React Learning/Components/Examples/Card";
 import Ingredients from "./React Learning/Components/Udemy_Course_Examples/Section28/components/Ingredients/Ingredients";
 import Auth from "./React Learning/Components/Udemy_Course_Examples/Section28/components/Auth";
 import { AuthContext } from "./React Learning/Components/Udemy_Course_Examples/Section28/components/context/auth-context";
+import Todo from "./React Learning/Components/Udemy_Course_Examples/Section 29/components/Todo";
+import Modal from "./React Learning/Components/Udemy_Course_Examples/Section 29/components/Modal";
+import Backdrop from "./React Learning/Components/Udemy_Course_Examples/Section 29/components/Backdrop";
 
 const App = (props) => {
-// const [cartIsShown, setCartIsShown] = useState(false);
+  // const [cartIsShown, setCartIsShown] = useState(false);
 
-// const showCartHandler = () => {
-//   setCartIsShown(true);
-// };
-// const hideCartHandler = () => {
-//   setCartIsShown(false);
-// };
-//  const authCtx=useContext(AuthContext)
+  // const showCartHandler = () => {
+  //   setCartIsShown(true);
+  // };
+  // const hideCartHandler = () => {
+  //   setCartIsShown(false);
+  // };
+  //  const authCtx=useContext(AuthContext)
 
-const authCtx=useContext(AuthContext)
-let content=<Auth />
-if(authCtx.isAuth){
-content=<Ingredients />
-}
+  const authCtx = useContext(AuthContext);
+  let content = <Auth />;
+  if (authCtx.isAuth) {
+    content = <Ingredients />;
+  }
 
   return (
+    // <CartProvider>
+    //   {cartIsShown && <Cart onClose={hideCartHandler} />}
+    //   <Header onShowCart={showCartHandler} />
+    //   <main>
+    //     <Meals />
+    //   </main>
+    // </CartProvider>
 
-// <CartProvider>
-//   {cartIsShown && <Cart onClose={hideCartHandler} />}
-//   <Header onShowCart={showCartHandler} />
-//   <main>
-//     <Meals />
-//   </main>
-// </CartProvider>
+    // <Layout>
+    //     <Routes>
+    //       <Route path='/' element={<HomePage />} />
+    //     {!authCtx.isLoggedIn &&   <Route path='/auth' element={<AuthPage />} /> }
+    //     {authCtx.isLoggedIn &&   <Route path='/profile' element={<UserProfile />} /> }
+    //    {!authCtx.isLoggedIn && <Route path="*" element={<Navigate to='/auth' />} />}
+    //     {/* <Route path="*" element={<Navigate to='/' />} /> */}
+    //     </Routes>
+    //   </Layout>
 
-
-// <Layout>
-//     <Routes>
-//       <Route path='/' element={<HomePage />} />
-//     {!authCtx.isLoggedIn &&   <Route path='/auth' element={<AuthPage />} /> }
-//     {authCtx.isLoggedIn &&   <Route path='/profile' element={<UserProfile />} /> }
-//    {!authCtx.isLoggedIn && <Route path="*" element={<Navigate to='/auth' />} />}
-//     {/* <Route path="*" element={<Navigate to='/' />} /> */}
-//     </Routes>
-//   </Layout>
-
-
- <div>
-  
-{content}
-   </div>
-
-
-
+    <div>
+      <h1>My Todos</h1>
+      <Todo text='Learn React'/>
+      <Todo text='Master React'/>
+      <Todo text='Explore React'/>
+      <Modal />
+      <Backdrop />
+    
+    </div>
   );
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
 
 //animating react apps
 // class App extends Component {
@@ -143,28 +136,6 @@ export default App;
 // }
 
 // export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const App = (props) => {
 
