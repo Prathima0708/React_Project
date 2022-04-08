@@ -12,12 +12,12 @@ import AuthContextProvider from './React Learning/Components/Udemy_Course_Exampl
 
 ReactDOM.render(
   // <React.StrictMode> 
-   <AuthContextProvider>
+   <BrowserRouter>
  
     <App />
    
    {/* </React.StrictMode>, */}
-   </AuthContextProvider> ,
+   </BrowserRouter> ,
   document.getElementById('root')
 );
 

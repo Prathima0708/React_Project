@@ -1,19 +1,21 @@
 import React, { useContext } from "react";
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
+// import "./App.css";
+import Layout from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/components/Layout/Layout";
+
+import Allmeetups from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/pages/Allmeetups";
+import Favorites from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/pages/Favorites";
+import Newmeetups from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/pages/Newmeetups";
 import "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css";
-import "./React Learning/Components/Udemy_Course_Examples/Section 29/components/index.css"
+
 // import { Navigate, Route, Routes } from "react-router-dom";
 
 // import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
 // import Form from "./React Learning/Components/Examples/Form";
 // import Card from "./React Learning/Components/Examples/Card";
-import Ingredients from "./React Learning/Components/Udemy_Course_Examples/Section28/components/Ingredients/Ingredients";
-import Auth from "./React Learning/Components/Udemy_Course_Examples/Section28/components/Auth";
-import { AuthContext } from "./React Learning/Components/Udemy_Course_Examples/Section28/components/context/auth-context";
-import Todo from "./React Learning/Components/Udemy_Course_Examples/Section 29/components/Todo";
-import Modal from "./React Learning/Components/Udemy_Course_Examples/Section 29/components/Modal";
-import Backdrop from "./React Learning/Components/Udemy_Course_Examples/Section 29/components/Backdrop";
+
+
 
 const App = (props) => {
   // const [cartIsShown, setCartIsShown] = useState(false);
@@ -24,13 +26,13 @@ const App = (props) => {
   // const hideCartHandler = () => {
   //   setCartIsShown(false);
   // };
-  //  const authCtx=useContext(AuthContext)
 
-  const authCtx = useContext(AuthContext);
-  let content = <Auth />;
-  if (authCtx.isAuth) {
-    content = <Ingredients />;
-  }
+
+  // const authCtx = useContext(AuthContext);
+  // let content = <Auth />;
+  // if (authCtx.isAuth) {
+  //   content = <Ingredients />;
+  // }
 
   return (
     // <CartProvider>
@@ -51,19 +53,35 @@ const App = (props) => {
     //     </Routes>
     //   </Layout>
 
-    <div>
-      <h1>My Todos</h1>
-      <Todo text='Learn React'/>
-      <Todo text='Master React'/>
-      <Todo text='Explore React'/>
-      <Modal />
-      <Backdrop />
     
-    </div>
+      <Layout >
+   <Routes>
+     <Route path="/" element={<Allmeetups />} />
+     <Route path="/new-meetup" element={<Newmeetups />} />
+     <Route path="/favorites" element={<Favorites />} />
+   </Routes>
+     
+   </Layout>
+   
   );
 };
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //animating react apps
 // class App extends Component {
@@ -136,6 +154,14 @@ export default App;
 // }
 
 // export default App;
+
+
+
+
+
+
+
+
 
 // const App = (props) => {
 
