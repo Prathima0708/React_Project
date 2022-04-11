@@ -1,88 +1,67 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "../Button/Button";
+import React from "react";
 import './Navbar.css'
+import { NavLink } from "react-router-dom";
 
-function Navbar() {
-  const [click, setClick] = useState(false);
-  const [button,setButton]=useState(true)
-
-  const handleClick = () => {
-    setClick(!click);
-  };
-  
-  const closeMobileMenu = () => {
-    setClick(false);
-  };
-
-  const showButton=()=>{
-      if(window.innerWidth<=960){
-          setButton(false)
-      }else{
-          setButton(true)
-      }
-  }
-
-  useEffect(()=>{
-      showButton()
-  },[])
-
-  window.addEventListener('resize',showButton)
-
+const Navbar = () => {
   return (
-    <Fragment>
-      <nav className="navbar">
-        <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            LOGO <i className="fab fa-typo3"></i>
-          </Link>
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+        <div class="container">
+          <NavLink className="navbar-brand fw-bold fs-4" to="/">
+            LA COLLECTION
+          </NavLink>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span classNameName="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <NavLink className="nav-link active" aria-current="page" to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/products">
+                  PRODUCTS
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/about">
+                  ABOUT
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/contact">
+                  CONTACT
+                </NavLink>
+              </li>
+             
+            </ul>
+
+            <div className="buttons">
+              <NavLink to="/login" className="btn btn-outline-dark m-2">
+                <i classNameName="fa fa-sign-in m-1" ></i>Login</NavLink>
+                <NavLink to="/register" className="btn btn-outline-dark m-2">
+                <i className="fa fa-user-plus m-1" ></i>Register</NavLink>
+                <NavLink to="/cart" className="btn btn-outline-dark m-2">
+                <i className="fa fa-shopping-cart m-1" ></i>Cart (0)</NavLink>
+            </div>
+
           </div>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link
-                to="/services"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Services
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link
-                to="/products"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Products
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link
-                to="/sign-up"
-                className="nav-links-mobile"
-                onClick={closeMobileMenu}
-              >
-                Sign Up
-              </Link>
-            </li>
-          </ul>
-          {button && <Button buttonStyle='btn--outline'>
-              SIGN-UP
-              </Button>}
         </div>
       </nav>
-    </Fragment>
+    </div>
   );
-}
+};
 
 export default Navbar;
