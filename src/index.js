@@ -10,6 +10,8 @@ import '../node_modules/font-awesome/css/font-awesome.min.css'
 import { FavoritesContextProvider } from './React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/store/favorites-context';
 // import ProductsProvider from "./React Learning/Components/Udemy_Course_Examples/ReplacingRedux/context/products-context"
 // import AuthContextProvider from './React Learning/Components/Udemy_Course_Examples/Section28/components/context/auth-context';
+import {Provider} from 'react-redux'
+import store from "../src/React Learning/Components/Examples/Website/components/redux/store"
 
 
 
@@ -17,11 +19,13 @@ ReactDOM.render(
   // <React.StrictMode> 
   // <FavoritesContextProvider>
    <BrowserRouter>
- 
+
     <App />
    
    {/* </React.StrictMode>, */}
-   </BrowserRouter> ,
+  
+   </BrowserRouter>
+    ,
   //  </FavoritesContextProvider>,
   document.getElementById('root')
 );

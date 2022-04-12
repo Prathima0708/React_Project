@@ -1,12 +1,13 @@
 // import React, { useContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import  Navbar  from "./React Learning/Components/Examples/Website/components/Navbar/Navbar";
-import Home from "./React Learning/Components/Examples/Website/components/Home";
+import Intro from "./React Learning/Components/Examples/Portfolio/components/Intro/Intro";
+import Navbar from "./React Learning/Components/Examples/Portfolio/components/Navbar/Navbar";
 
-import "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css";
-import Products from "./React Learning/Components/Examples/Website/components/Products";
-import Product from "./React Learning/Components/Examples/Website/components/Product";
+
+// import "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css";
+
 
 // import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -51,15 +52,14 @@ const App = (props) => {
      
   //  </Layout>
 
+
   <>
+ 
   <Navbar />
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/products" element={<Products />} />
-    <Route path="/products/:id" element={<Product />} />
-  </Routes>
-  
+  <Intro />
   </>
+
+ 
   
    
   );
