@@ -20,3 +20,23 @@ export default function Favorites() {
     </section>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// const Favorites = () => {
+//   return (
+//     <div>Favorites Page</div>
+//   )
+// }
+
+// export default Favorites
+

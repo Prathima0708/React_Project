@@ -1,9 +1,9 @@
 .services {
     padding: 0 3rem 0 3rem;
     display: flex;
-    height: 30rem;
+    height: 90vh;
     margin-bottom: 8rem;
-    margin-top: 9rem;
+    margin-top: -5rem;
     margin-bottom: 13rem;
     /* scroll view */
     padding-top: 3rem;
@@ -32,8 +32,9 @@
     margin-top: 1rem;
   }
   .s-button {
-    width: 8rem;
-    height: 2rem;
+    padding: auto;
+    width: 11rem;
+    height: 3rem;
     margin-top: 1rem;
   }
   /* right sided */
