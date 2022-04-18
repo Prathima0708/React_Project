@@ -1,14 +1,18 @@
-// import React, { useContext, useState } from "react";
+import React, { useContext, useState ,useEffect} from "react";
 import { Route, Routes } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import Navbar from "./React Learning/Components/Examples/Portfolio/components/Navbar/Navbar"
-import Intro from "./React Learning/Components/Examples/Portfolio/components/Intro/Intro"
-import Services from "./React Learning/Components/Examples/Portfolio/components/Services/Services";
-import Experience from "./React Learning/Components/Examples/Portfolio/components/Experiences/Experience";
-import Works from "./React Learning/Components/Examples/Portfolio/components/Works/Works";
-import Portfolio from "./React Learning/Components/Examples/Portfolio/components/Portfolio/Portfolio";
-import Slider from "./React Learning/Components/Examples/Portfolio/components/slider/Slider";
+import useHttp from "./React Learning/Components/Udemy_Course_Examples/CustomHooks/Hooks/use-http";
+import NewTask from "./React Learning/Components/Udemy_Course_Examples/CustomHooks/Task Example/components/NewTask/NewTask";
+import Tasks from "./React Learning/Components/Udemy_Course_Examples/CustomHooks/Task Example/components/Tasks/Tasks";
+
+// import Navbar from "./React Learning/Components/Examples/Portfolio/components/Navbar/Navbar"
+// import Intro from "./React Learning/Components/Examples/Portfolio/components/Intro/Intro"
+// import Services from "./React Learning/Components/Examples/Portfolio/components/Services/Services";
+// import Experience from "./React Learning/Components/Examples/Portfolio/components/Experiences/Experience";
+// import Works from "./React Learning/Components/Examples/Portfolio/components/Works/Works";
+// import Portfolio from "./React Learning/Components/Examples/Portfolio/components/Portfolio/Portfolio";
+// import Slider from "./React Learning/Components/Examples/Portfolio/components/slider/Slider";
 
 
 // import "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css";
@@ -35,6 +39,27 @@ const App = (props) => {
 
 // const [id,setId]=useState(1)
   
+const [tasks,setTasks]=useState([])
+const transformTasks=(tasksObj)=>{
+  const loadedTasks=[]
+  for(const taskKey in tasksObj){
+    loadedTasks.push({id:taskKey,text:tasksObj[taskKey].text})
+  }setTasks(loadedTasks)
+}
+const {isLoading,error,sendRequest:fetchTasks}=useHttp({
+  url:'https://custom-hooks-f390d-default-rtdb.firebaseio.com/tasks.json'
+},transformTasks)
+
+
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const taskAddHandler = (task) => {
+    setTasks((prevTasks) => prevTasks.concat(task));
+  };
+
 
   return (
     // <CartProvider>
@@ -56,16 +81,29 @@ const App = (props) => {
    </Layout>
    </> */
 
- <div className="App">
- <Navbar />
-  <Intro />
-  <Services />
-  <Experience />
-  <Works />
-  <Portfolio />
-  <Slider />
- </div>
+//  <div className="App">
+//  <Navbar />
+//   <Intro />
+//   <Services />
+//   <Experience />
+//   <Works />
+//   <Portfolio />
+//   <Slider />
+//  </div>
  
+
+<React.Fragment>
+      <NewTask onAddTask={taskAddHandler} />
+      <Tasks
+        items={tasks}
+        loading={isLoading}
+        error={error}
+        onFetch={fetchTasks}
+      />
+    </React.Fragment>
+
+
+
   
    
   );

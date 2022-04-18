@@ -1,4 +1,4 @@
-/* body{
+body{
   padding: 0;
   margin: 0;
 }
@@ -25,7 +25,7 @@ input {
   font-weight: bold;
 }
 
-.head
+/* .head
 {
   font-weight: bold;
   color: blue;
@@ -60,9 +60,9 @@ button:hover,
 button:active {
   background-color: #460897;
   border-color: #460897;
-} */
+}
 
-
+ */
 
 
 
