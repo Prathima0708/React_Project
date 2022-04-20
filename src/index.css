@@ -67,7 +67,7 @@ code {
   background-color: teal;
   color: white;
 } */
-button {
+/* button {
   font: inherit;
   background: #ff2058;
   padding: 0.5rem 2rem;
@@ -85,4 +85,4 @@ button:active {
 
 button:focus {
   outline: none;
-}
+} */

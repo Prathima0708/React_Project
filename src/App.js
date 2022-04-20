@@ -6,13 +6,14 @@ import { BrowserRouter } from "react-router-dom";
 import Ex3 from "./React Learning/Components/Examples/Practice/Ex3";
 
 
-// import Navbar from "./React Learning/Components/Examples/Portfolio/components/Navbar/Navbar"
-// import Intro from "./React Learning/Components/Examples/Portfolio/components/Intro/Intro"
-// import Services from "./React Learning/Components/Examples/Portfolio/components/Services/Services";
-// import Experience from "./React Learning/Components/Examples/Portfolio/components/Experiences/Experience";
-// import Works from "./React Learning/Components/Examples/Portfolio/components/Works/Works";
-// import Portfolio from "./React Learning/Components/Examples/Portfolio/components/Portfolio/Portfolio";
-// import Slider from "./React Learning/Components/Examples/Portfolio/components/slider/Slider";
+import Navbar from "./React Learning/Components/Examples/Portfolio/components/Navbar/Navbar"
+import Intro from "./React Learning/Components/Examples/Portfolio/components/Intro/Intro"
+import Services from "./React Learning/Components/Examples/Portfolio/components/Services/Services";
+import Experience from "./React Learning/Components/Examples/Portfolio/components/Experiences/Experience";
+import Works from "./React Learning/Components/Examples/Portfolio/components/Works/Works";
+import Portfolio from "./React Learning/Components/Examples/Portfolio/components/Portfolio/Portfolio";
+import Slider from "./React Learning/Components/Examples/Portfolio/components/slider/Slider";
+import Calculator from "./React Learning/Components/Assessment/Calculator/Calculator";
 
 
 // import "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css";
@@ -59,20 +60,12 @@ const App = (props) => {
    </Layout>
    </> */
 
-//  <div className="App">
-//  <Navbar />
-//   <Intro />
-//   <Services />
-//   <Experience />
-//   <Works />
-//   <Portfolio />
-//   <Slider />
-//  </div>
+ <div >
+<Calculator />
+ </div>
  
 
-<div >
-<Ex3 />
-  </div>
+
 
 
 
