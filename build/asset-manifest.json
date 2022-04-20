@@ -1,21 +1,18 @@
 {
   "files": {
-    "main.css": "/React_Project/build/static/css/main.e16f8026.css",
-    "main.js": "/React_Project/build/static/js/main.a9d94e2e.js",
+    "main.css": "/React_Project/build/static/css/main.e6be30ae.css",
+    "main.js": "/React_Project/build/static/js/main.d8244f06.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/React_Project/build/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
-    "static/media/photo-1506280754576-f6fa8a873550.jfif": "/React_Project/build/static/media/photo-1506280754576-f6fa8a873550.f5ec1d260e2d19e1ea39.jfif",
-    "static/media/meals.jpg": "/React_Project/build/static/media/meals.a5884538dc434cf31ad7.jpg",
     "static/media/fontawesome-webfont.eot": "/React_Project/build/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
     "static/media/fontawesome-webfont.ttf?v=4.7.0": "/React_Project/build/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
-    "static/media/party-food-photo.jpg": "/React_Project/build/static/media/party-food-photo.0cbb01962d77efb46b7b.jpg",
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/React_Project/build/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/React_Project/build/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "index.html": "/React_Project/build/index.html",
-    "main.e16f8026.css.map": "/React_Project/build/static/css/main.e16f8026.css.map",
-    "main.a9d94e2e.js.map": "/React_Project/build/static/js/main.a9d94e2e.js.map"
+    "main.e6be30ae.css.map": "/React_Project/build/static/css/main.e6be30ae.css.map",
+    "main.d8244f06.js.map": "/React_Project/build/static/js/main.d8244f06.js.map"
   },
   "entrypoints": [
-    "static/css/main.e16f8026.css",
-    "static/js/main.a9d94e2e.js"
+    "static/css/main.e6be30ae.css",
+    "static/js/main.d8244f06.js"
   ]
 }
