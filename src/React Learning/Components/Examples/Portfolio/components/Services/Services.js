@@ -9,7 +9,7 @@ import Resume from './resume.pdf'
 
 const Services = () => {
   return (
-    <div className='services'>
+    <div className='services' id="s">
         <div className='awesome'>
         <span>My Awesome</span>
         <span>Services</span>

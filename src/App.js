@@ -1,19 +1,35 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+// import React, { useCallback, useMemo, useState } from "react";
+import { Route, Routes ,Navigate} from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 // import "./App.css";
 
-import Ex3 from "./React Learning/Components/Examples/Practice/Ex3";
+
+import MainNavigation from "./React Learning/Components/Assessment/W3 Template/components/MainNavigation/MainNavigation"
+import MainImage from "./React Learning/Components/Assessment/W3 Template/components/MainImage/MainImage";
+import About from "./React Learning/Components/Assessment/W3 Template/components/About/About";
+import Menu from "./React Learning/Components/Assessment/W3 Template/components/Menu/Menu";
+import Contact from "./React Learning/Components/Assessment/W3 Template/components/Contact/Contact";
+
+import Calculator from "./React Learning/Components/Assessment/Calculator/Calculator"
+import AboutPage from "./React Learning/Components/Assessment/W3 Template/pages/AboutPage";
+import Layout from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/components/Layout/Layout"
+import AllMeetupsPage from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/pages/Allmeetups";
+import NewMeetupPage from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/pages/Newmeetups"
+import FavoritesPage from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/pages/Favorites"
+import Home from "./React Learning/Components/Examples/Website2/pages/Home";
+import Pages from "./React Learning/Components/Examples/Website2/pages/Pages";
 
 
-import Navbar from "./React Learning/Components/Examples/Portfolio/components/Navbar/Navbar"
-import Intro from "./React Learning/Components/Examples/Portfolio/components/Intro/Intro"
-import Services from "./React Learning/Components/Examples/Portfolio/components/Services/Services";
-import Experience from "./React Learning/Components/Examples/Portfolio/components/Experiences/Experience";
-import Works from "./React Learning/Components/Examples/Portfolio/components/Works/Works";
-import Portfolio from "./React Learning/Components/Examples/Portfolio/components/Portfolio/Portfolio";
-import Slider from "./React Learning/Components/Examples/Portfolio/components/slider/Slider";
-import Calculator from "./React Learning/Components/Assessment/Calculator/Calculator";
+
+
+// import Navbar from "./React Learning/Components/Examples/Portfolio/components/Navbar/Navbar"
+// import Intro from "./React Learning/Components/Examples/Portfolio/components/Intro/Intro"
+// import Services from "./React Learning/Components/Examples/Portfolio/components/Services/Services";
+// import Experience from "./React Learning/Components/Examples/Portfolio/components/Experiences/Experience";
+// import Works from "./React Learning/Components/Examples/Portfolio/components/Works/Works";
+// import Portfolio from "./React Learning/Components/Examples/Portfolio/components/Portfolio/Portfolio";
+// import Slider from "./React Learning/Components/Examples/Portfolio/components/slider/Slider";
+
 
 
 // import "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css";
@@ -41,6 +57,7 @@ const App = (props) => {
 // const [id,setId]=useState(1)
 
   return (
+
     // <CartProvider>
     //   {cartIsShown && <Cart onClose={hideCartHandler} />}
     //   <Header onShowCart={showCartHandler} />
@@ -50,19 +67,48 @@ const App = (props) => {
     // </CartProvider>
 
   
-/* <>
-   <Layout>
-   <Routes>
-     <Route path="/" element={<Allmeetups />} />
-     <Route path="/new-meetup" element={<Newmeetups />} />
-     <Route path="/favorites" element={<Favorites />} />
-   </Routes>
-   </Layout>
-   </> */
+//  <>
+//    <MainNavigation />
+//    <MainImage /> 
+// <About />
+// <Menu />
+//    <Contact />
+   
 
- <div >
-<Calculator />
- </div>
+
+ 
+
+//    </> 
+
+<>
+<Pages />
+</>
+
+
+
+/* <div>
+<Layout>
+      <Routes>
+        <Route path='/' element={ <AllMeetupsPage />}/> 
+         
+        
+        <Route path='/new-meetup' element={<NewMeetupPage />}/>
+        
+        <Route path='/favorites' element={<FavoritesPage />}/>
+          
+       
+      </Routes>
+    </Layout>
+
+
+</div> */
+
+
+//  <div >
+// <Navbar />
+// <Intro />
+// <Services />
+//  </div>
  
 
 

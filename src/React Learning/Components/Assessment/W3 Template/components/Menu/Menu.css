@@ -1,0 +1,8 @@
+@media screen and (min-width:576px){
+  #Menu{
+      margin-left: 50px;
+  }
+    .menuImage{
+        height: auto;
+    }
+}

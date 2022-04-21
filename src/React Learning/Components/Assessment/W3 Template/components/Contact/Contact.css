@@ -1,0 +1,12 @@
+@media screen and (max-width:500px){
+    .contact,.contact1{
+        display: grid;
+        grid-template-columns: 2fr;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+    .row{
+        margin: 0;
+        padding: 0;
+    }
+}

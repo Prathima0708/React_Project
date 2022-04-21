@@ -22,7 +22,7 @@ function Calculator()
     const calculate=()=>
     {
         try{
-            setResult(eval(result).toString())
+            setResult(eval(result).toFixed(2))
         }
         catch{
             setResult("Error")
@@ -33,7 +33,7 @@ function Calculator()
       
         <div className="container">
             <form>
-                <input type="text" value={result} />
+                <input type="text" value={result} className="calcinput" />
             </form>
             
             <div className="keypad">
