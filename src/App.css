@@ -23,9 +23,9 @@ input {
 
 .my-card > div:first-child{
   font-weight: bold;
-}
+} 
 
-/* .head
+ .head
 {
   font-weight: bold;
   color: blue;
@@ -60,13 +60,13 @@ button:hover,
 button:active {
   background-color: #460897;
   border-color: #460897;
-}
-
- */
+} 
 
 
 
 
+
+/* 
 .app{
   margin: 3rem auto;
   width: 30rem;
@@ -121,4 +121,18 @@ button:active {
       padding: 0.5rem 1rem;
 
     }
+  } */
+
+
+
+
+
+
+  .App{
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+  }
+  .App::-webkit-scrollbar{
+    display: none;
   }

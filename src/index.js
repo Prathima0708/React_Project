@@ -12,7 +12,7 @@ import { FavoritesContextProvider } from './React Learning/Components/Udemy_Cour
 // import ProductsProvider from "./React Learning/Components/Udemy_Course_Examples/ReplacingRedux/context/products-context"
 // import AuthContextProvider from './React Learning/Components/Udemy_Course_Examples/Section28/components/context/auth-context';
 import {Provider} from 'react-redux'
-import productReducer from './React Learning/Components/Udemy_Course_Examples/ReplacingRedux/store/reducers/products'
+import store from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Store/index"
 
 
 
@@ -21,9 +21,11 @@ ReactDOM.render(
 
   
    <BrowserRouter>
-
-    <App />
+<Provider store={store}>
+<App />
    
+</Provider>
+    
    {/* </React.StrictMode>, */}
   
    </BrowserRouter>

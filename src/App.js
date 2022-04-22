@@ -1,23 +1,15 @@
 // import React, { useCallback, useMemo, useState } from "react";
-import { Route, Routes ,Navigate} from "react-router-dom";
+// import { Route, Routes ,Navigate} from "react-router-dom";
 // import { BrowserRouter } from "react-router-dom";
-// import "./App.css";
+import "./App.css";
+import Header from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Header/Header";
+
+import Counter from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Counter/Counter";
+import Auth from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Auth/Auth";
 
 
-import MainNavigation from "./React Learning/Components/Assessment/W3 Template/components/MainNavigation/MainNavigation"
-import MainImage from "./React Learning/Components/Assessment/W3 Template/components/MainImage/MainImage";
-import About from "./React Learning/Components/Assessment/W3 Template/components/About/About";
-import Menu from "./React Learning/Components/Assessment/W3 Template/components/Menu/Menu";
-import Contact from "./React Learning/Components/Assessment/W3 Template/components/Contact/Contact";
 
-import Calculator from "./React Learning/Components/Assessment/Calculator/Calculator"
-import AboutPage from "./React Learning/Components/Assessment/W3 Template/pages/AboutPage";
-import Layout from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/components/Layout/Layout"
-import AllMeetupsPage from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/pages/Allmeetups";
-import NewMeetupPage from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/pages/Newmeetups"
-import FavoritesPage from "./React Learning/Components/Udemy_Course_Examples/Section 29/Example-2/pages/Favorites"
-import Home from "./React Learning/Components/Examples/Website2/pages/Home";
-import Pages from "./React Learning/Components/Examples/Website2/pages/Pages";
+// import Header from "./React Learning/Components/Examples/Website2/components/Header/Header";
 
 
 
@@ -44,7 +36,7 @@ import Pages from "./React Learning/Components/Examples/Website2/pages/Pages";
 
 
 
-const App = (props) => {
+// const App = (props) => {
   // const [cartIsShown, setCartIsShown] = useState(false);
 
   // const showCartHandler = () => {
@@ -56,7 +48,7 @@ const App = (props) => {
 
 // const [id,setId]=useState(1)
 
-  return (
+  // return (
 
     // <CartProvider>
     //   {cartIsShown && <Cart onClose={hideCartHandler} />}
@@ -80,9 +72,10 @@ const App = (props) => {
 
 //    </> 
 
-<>
-<Pages />
-</>
+/* <>
+<Header />
+
+</> */
 
 
 
@@ -117,13 +110,28 @@ const App = (props) => {
 
   
    
-  );
-};
+//   );
+// };
 
-export default App;
+// export default App;
 
 
 
+const App=()=>{
+  return(
+<>
+{/* <Header />
+<MainContainer />
+<Bottom /> */}
+<Header />
+<Auth />
+  <Counter />
+  
+</>
+  )
+
+}
+export default App
 
 
 
