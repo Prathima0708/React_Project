@@ -10,12 +10,12 @@ const Products = () => {
   let componentMounted = true;
 
   useEffect(() => {
-    const getProducts = async () => {
+    const getProducts = async () => {   //to display products when page is loaded using useeffect
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch("https://fakestoreapi.com/products");  //fetching the response
       if (componentMounted) {
-        setData(await response.clone().json());
-        setFilter(await response.json());
+        setData(await response.clone().json());  
+        setFilter(await response.json()); //getting the filtered data
         setLoading(false);
         console.log(filter);
       }
@@ -48,7 +48,7 @@ const Products = () => {
     );
   };
 
-  const filterProduct = (cat) => {
+  const filterProduct = (cat) => {   //for filtering the data
     const updatedList = data.filter((x) => x.category === cat);
     setFilter(updatedList);
   };

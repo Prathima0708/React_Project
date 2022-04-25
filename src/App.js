@@ -1,15 +1,10 @@
 // import React, { useCallback, useMemo, useState } from "react";
 // import { Route, Routes ,Navigate} from "react-router-dom";
 // import { BrowserRouter } from "react-router-dom";
-import "./App.css";
-import Header from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Header/Header";
+// import "./App.css";
+import TodoForm from "./React Learning/Components/Assessment/Todo/components/TodoForm";
+import TodoList from "./React Learning/Components/Assessment/Todo/components/TodoList";
 
-import Counter from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Counter/Counter";
-import Auth from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-1/Auth/Auth";
-
-
-
-// import Header from "./React Learning/Components/Examples/Website2/components/Header/Header";
 
 
 
@@ -24,7 +19,7 @@ import Auth from "./React Learning/Components/Udemy_Course_Examples/Redux/Exampl
 
 
 
-// import "./React Learning/Components/Udemy_Course_Examples/WorkingWithForms/style.css";
+
 
 
 // import { Navigate, Route, Routes } from "react-router-dom";
@@ -33,6 +28,7 @@ import Auth from "./React Learning/Components/Udemy_Course_Examples/Redux/Exampl
 
 // import Form from "./React Learning/Components/Examples/Form";
 // import Card from "./React Learning/Components/Examples/Card";
+
 
 
 
@@ -118,15 +114,19 @@ import Auth from "./React Learning/Components/Udemy_Course_Examples/Redux/Exampl
 
 
 const App=()=>{
+  // const [id,setId]=useState(1)
   return(
 <>
 {/* <Header />
 <MainContainer />
 <Bottom /> */}
-<Header />
+
+{/* <Header />
 <Auth />
-  <Counter />
-  
+  <Counter /> */}
+
+<TodoList />
+
 </>
   )
 
