@@ -2,12 +2,6 @@
 // import { Route, Routes ,Navigate} from "react-router-dom";
 // import { BrowserRouter } from "react-router-dom";
 // import "./App.css";
-import TodoForm from "./React Learning/Components/Assessment/Todo/components/TodoForm";
-import TodoList from "./React Learning/Components/Assessment/Todo/components/TodoList";
-
-
-
-
 
 // import Navbar from "./React Learning/Components/Examples/Portfolio/components/Navbar/Navbar"
 // import Intro from "./React Learning/Components/Examples/Portfolio/components/Intro/Intro"
@@ -17,63 +11,52 @@ import TodoList from "./React Learning/Components/Assessment/Todo/components/Tod
 // import Portfolio from "./React Learning/Components/Examples/Portfolio/components/Portfolio/Portfolio";
 // import Slider from "./React Learning/Components/Examples/Portfolio/components/slider/Slider";
 
-
-
-
-
-
-// import { Navigate, Route, Routes } from "react-router-dom";
-
-
+import Layout from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Layout/Layout";
+import Cart from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Cart/Cart";
+import Products from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Shop/Products";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { uiActions } from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/ui-slice";
+import Notification from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/UI/Notification";
 
 // import Form from "./React Learning/Components/Examples/Form";
 // import Card from "./React Learning/Components/Examples/Card";
 
-
-
-
 // const App = (props) => {
-  // const [cartIsShown, setCartIsShown] = useState(false);
+// const [cartIsShown, setCartIsShown] = useState(false);
 
-  // const showCartHandler = () => {
-  //   setCartIsShown(true);
-  // };
-  // const hideCartHandler = () => {
-  //   setCartIsShown(false);
-  // };
+// const showCartHandler = () => {
+//   setCartIsShown(true);
+// };
+// const hideCartHandler = () => {
+//   setCartIsShown(false);
+// };
 
 // const [id,setId]=useState(1)
 
-  // return (
+// return (
 
-    // <CartProvider>
-    //   {cartIsShown && <Cart onClose={hideCartHandler} />}
-    //   <Header onShowCart={showCartHandler} />
-    //   <main>
-    //     <Meals />
-    //   </main>
-    // </CartProvider>
+// <CartProvider>
+//   {cartIsShown && <Cart onClose={hideCartHandler} />}
+//   <Header onShowCart={showCartHandler} />
+//   <main>
+//     <Meals />
+//   </main>
+// </CartProvider>
 
-  
 //  <>
 //    <MainNavigation />
-//    <MainImage /> 
+//    <MainImage />
 // <About />
 // <Menu />
 //    <Contact />
-   
 
-
- 
-
-//    </> 
+//    </>
 
 /* <>
 <Header />
 
 </> */
-
-
 
 /* <div>
 <Layout>
@@ -92,46 +75,89 @@ import TodoList from "./React Learning/Components/Assessment/Todo/components/Tod
 
 </div> */
 
-
 //  <div >
 // <Navbar />
 // <Intro />
 // <Services />
 //  </div>
- 
 
-
-
-
-
-  
-   
 //   );
 // };
 
 // export default App;
 
 
+let initial=true
 
-const App=()=>{
+const App = () => {
+  const dispatch=useDispatch()
+  const showCart = useSelector((state) => state.ui.cartIsVisible);
+  const cart = useSelector((state) => state.cart);
+  const notification=useSelector((state)=>state.ui.notification)
+  useEffect(() => {
+    const sendCartData= async ()=>{
+dispatch(uiActions.showNotification({
+  status:'pending',
+  title:'Sending...',
+  message:'Sending Cart data'
+}))
+  const response=  await  fetch(
+        "https://advanced-redux-fbab5-default-rtdb.firebaseio.com/cart.json",
+        { method: 'PUT', body: JSON.stringify(cart), }
+      );
+      if(!response.ok){
+        throw new Error('Something went wrong')
+      }
+      // const responseData=response.json() //while sending cart data no need to get response data
+      dispatch(uiActions.showNotification({
+        status:'success',
+        title:'Success!...',
+        message:'Sent Cart data successfully'
+      }))
+    }
+
+
+    if(initial){
+      initial=false
+      return
+    }
+
+    sendCartData().catch(error=>{
+      dispatch(uiActions.showNotification({
+        status:'error',
+        title:'Error!...',
+        message:'Something went wrong '
+      }))
+    })
+    
+  }, [cart,dispatch]);
   // const [id,setId]=useState(1)
-  return(
-<>
-{/* <Header />
-<MainContainer />
-<Bottom /> */}
+  return (
+    <>
 
-{/* <Header />
+
+      {/* <Header />
 <Auth />
   <Counter /> */}
 
-<TodoList />
+{notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
+      <Layout>
+        {showCart && <Cart />}
+        <Products />
+      </Layout>
+    </>
+  );
+};
+export default App;
 
-</>
-  )
 
-}
-export default App
+
+
+
+
+
+
+
 
 
 
@@ -216,14 +242,6 @@ export default App
 // }
 
 // export default App;
-
-
-
-
-
-
-
-
 
 // const App = (props) => {
 
