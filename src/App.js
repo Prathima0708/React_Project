@@ -16,8 +16,15 @@ import Cart from "./React Learning/Components/Udemy_Course_Examples/Redux/Exampl
 import Products from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Shop/Products";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { uiActions } from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/ui-slice";
+
 import Notification from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/UI/Notification";
+import { fetchCartData, sendCartData } from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/cart-actions";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Home from "./React Learning/Components/Examples/Website2/components/Home";
+import About from "./React Learning/Components/Examples/Website2/components/About";
+import Service from "./React Learning/Components/Examples/Website2/components/Service";
+import Contact from "./React Learning/Components/Examples/Website2/components/Contact";
+import Navbar from "./React Learning/Components/Examples/Website2/components/Navbar";
 
 // import Form from "./React Learning/Components/Examples/Form";
 // import Card from "./React Learning/Components/Examples/Card";
@@ -32,7 +39,7 @@ import Notification from "./React Learning/Components/Udemy_Course_Examples/Redu
 //   setCartIsShown(false);
 // };
 
-// const [id,setId]=useState(1)
+
 
 // return (
 
@@ -94,44 +101,23 @@ const App = () => {
   const showCart = useSelector((state) => state.ui.cartIsVisible);
   const cart = useSelector((state) => state.cart);
   const notification=useSelector((state)=>state.ui.notification)
+
+  useEffect(()=>{
+dispatch(fetchCartData())
+  },[dispatch])
+
   useEffect(() => {
-    const sendCartData= async ()=>{
-dispatch(uiActions.showNotification({
-  status:'pending',
-  title:'Sending...',
-  message:'Sending Cart data'
-}))
-  const response=  await  fetch(
-        "https://advanced-redux-fbab5-default-rtdb.firebaseio.com/cart.json",
-        { method: 'PUT', body: JSON.stringify(cart), }
-      );
-      if(!response.ok){
-        throw new Error('Something went wrong')
-      }
-      // const responseData=response.json() //while sending cart data no need to get response data
-      dispatch(uiActions.showNotification({
-        status:'success',
-        title:'Success!...',
-        message:'Sent Cart data successfully'
-      }))
-    }
-
-
     if(initial){
       initial=false
       return
     }
-
-    sendCartData().catch(error=>{
-      dispatch(uiActions.showNotification({
-        status:'error',
-        title:'Error!...',
-        message:'Something went wrong '
-      }))
-    })
+    if(cart.changed){
+      dispatch(sendCartData(cart))
+    }
+    
     
   }, [cart,dispatch]);
-  // const [id,setId]=useState(1)
+ 
   return (
     <>
 
@@ -140,11 +126,23 @@ dispatch(uiActions.showNotification({
 <Auth />
   <Counter /> */}
 
-{notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
+{/* {notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
       <Layout>
         {showCart && <Cart />}
         <Products />
-      </Layout>
+      </Layout> */}
+
+ <Navbar />
+<Routes>
+ 
+  <Route path="/" element={<Home />} />
+  <Route path="/about" element={<About />} />
+  <Route path="/service" element={<Service />} />
+  <Route path="/contact" element={<Contact />} />
+  <Route path="/*" element={ <Navigate to="/" />} />
+</Routes> 
+
+
     </>
   );
 };
