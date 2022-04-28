@@ -25,6 +25,7 @@ import About from "./React Learning/Components/Examples/Website2/components/Abou
 import Service from "./React Learning/Components/Examples/Website2/components/Service";
 import Contact from "./React Learning/Components/Examples/Website2/components/Contact";
 import Navbar from "./React Learning/Components/Examples/Website2/components/Navbar";
+import { Dummy } from "./React Learning/Components/Examples/Website2/components/Dummy";
 
 // import Form from "./React Learning/Components/Examples/Form";
 // import Card from "./React Learning/Components/Examples/Card";
@@ -136,7 +137,11 @@ dispatch(fetchCartData())
 <Routes>
  
   <Route path="/" element={<Home />} />
-  <Route path="/about" element={<About />} />
+  <Route path="/about/*" element={<About />} >
+  <Route path="new" element={  <p>Hello</p>} /> 
+  
+    </Route>
+
   <Route path="/service" element={<Service />} />
   <Route path="/contact" element={<Contact />} />
   <Route path="/*" element={ <Navigate to="/" />} />

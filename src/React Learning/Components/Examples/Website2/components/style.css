@@ -32,6 +32,11 @@
 #header .animated{
     animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 @-webkit-keyframes up-down{
     0%{
         transform: translateY(10px);
