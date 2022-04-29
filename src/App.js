@@ -3,6 +3,14 @@
 // import { BrowserRouter } from "react-router-dom";
 // import "./App.css";
 
+import Context from "./React Learning/Components/Examples/ReactHooks/Context";
+
+
+
+
+
+
+
 // import Navbar from "./React Learning/Components/Examples/Portfolio/components/Navbar/Navbar"
 // import Intro from "./React Learning/Components/Examples/Portfolio/components/Intro/Intro"
 // import Services from "./React Learning/Components/Examples/Portfolio/components/Services/Services";
@@ -11,21 +19,8 @@
 // import Portfolio from "./React Learning/Components/Examples/Portfolio/components/Portfolio/Portfolio";
 // import Slider from "./React Learning/Components/Examples/Portfolio/components/slider/Slider";
 
-import Layout from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Layout/Layout";
-import Cart from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Cart/Cart";
-import Products from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Shop/Products";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 
-import Notification from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/UI/Notification";
-import { fetchCartData, sendCartData } from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/cart-actions";
-import { Navigate, Route, Routes } from "react-router-dom";
-import Home from "./React Learning/Components/Examples/Website2/components/Home";
-import About from "./React Learning/Components/Examples/Website2/components/About";
-import Service from "./React Learning/Components/Examples/Website2/components/Service";
-import Contact from "./React Learning/Components/Examples/Website2/components/Contact";
-import Navbar from "./React Learning/Components/Examples/Website2/components/Navbar";
-import { Dummy } from "./React Learning/Components/Examples/Website2/components/Dummy";
+
 
 // import Form from "./React Learning/Components/Examples/Form";
 // import Card from "./React Learning/Components/Examples/Card";
@@ -95,29 +90,11 @@ import { Dummy } from "./React Learning/Components/Examples/Website2/components/
 // export default App;
 
 
-let initial=true
 
 const App = () => {
-  const dispatch=useDispatch()
-  const showCart = useSelector((state) => state.ui.cartIsVisible);
-  const cart = useSelector((state) => state.cart);
-  const notification=useSelector((state)=>state.ui.notification)
 
-  useEffect(()=>{
-dispatch(fetchCartData())
-  },[dispatch])
 
-  useEffect(() => {
-    if(initial){
-      initial=false
-      return
-    }
-    if(cart.changed){
-      dispatch(sendCartData(cart))
-    }
-    
-    
-  }, [cart,dispatch]);
+  
  
   return (
     <>
@@ -127,13 +104,9 @@ dispatch(fetchCartData())
 <Auth />
   <Counter /> */}
 
-{/* {notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
-      <Layout>
-        {showCart && <Cart />}
-        <Products />
-      </Layout> */}
 
- <Navbar />
+
+ {/* <Navbar />
 <Routes>
  
   <Route path="/" element={<Home />} />
@@ -145,8 +118,10 @@ dispatch(fetchCartData())
   <Route path="/service" element={<Service />} />
   <Route path="/contact" element={<Contact />} />
   <Route path="/*" element={ <Navigate to="/" />} />
-</Routes> 
+</Routes>  */}
 
+
+<Context />
 
     </>
   );
