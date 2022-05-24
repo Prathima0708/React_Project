@@ -236,7 +236,11 @@ import { useState } from 'react';
 
 import classes from './AuthForm.module.css';
 
-const AuthForm = () => {
+const AuthForm = ({Login,error}) => {
+const [details,setDetails]=useState({email:"",password:""})
+const submitHandler=()=>{
+  Login(details)
+}
   const [isLogin, setIsLogin] = useState(true);
 
   const switchAuthModeHandler = () => {
@@ -246,7 +250,7 @@ const AuthForm = () => {
   return (
     <section className={classes.auth}>
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor='email'>Your Email</label>
           <input type='email' id='email' required autoComplete='off' />
