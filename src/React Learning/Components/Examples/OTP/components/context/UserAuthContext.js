@@ -31,6 +31,10 @@ export function UserAuthContextProvider({ children }) {
     return signInWithPopup(auth, googleAuthProvider);
   }
 
+  function setUpRecaptcha(number){
+      const recaptchaVerifier=new RecaptchaVerifier
+  }
+
   function setUpRecaptha(number) {
     const recaptchaVerifier = new RecaptchaVerifier(
       "recaptcha-container",
