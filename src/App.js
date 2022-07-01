@@ -27,8 +27,8 @@ import HomePage from "./React Learning/Components/Examples/CryptoHunter/pages/Ho
 function App() {
   const useStyles = makeStyles(() => ({
     App: {
-      backgroundColor: "#14161a",
-      color: "white",
+      // backgroundColor: "#14161a",
+      // color: "white",
       minHeight: "100vh",
     },
   }));
