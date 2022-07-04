@@ -1,8 +1,11 @@
-import { makeStyles } from "@material-ui/styles";
-import { Route, Routes } from "react-router-dom";
-import Header from "./React Learning/Components/Examples/CryptoHunter/components/Header";
-import CoinPage from "./React Learning/Components/Examples/CryptoHunter/pages/CoinPage";
-import HomePage from "./React Learning/Components/Examples/CryptoHunter/pages/HomePage";
+
+import React from "react";
+
+import { fetchData } from "./React Learning/Components/Examples/Covid19/api";
+import styles from './React Learning/Components/Examples/Covid19/App.module.css'
+import Cards from "./React Learning/Components/Examples/Covid19/components/Cards/Cards";
+import Chart from "./React Learning/Components/Examples/Covid19/components/Chart/Chart";
+import CountryPicker from "./React Learning/Components/Examples/Covid19/components/CountryPicker/CountryPicker";
 
 // function App() {
 //   return (
@@ -24,39 +27,66 @@ import HomePage from "./React Learning/Components/Examples/CryptoHunter/pages/Ho
 
 // export default App;
 
-function App() {
-  const useStyles = makeStyles(() => ({
-    App: {
-      // backgroundColor: "#14161a",
-      // color: "white",
-      minHeight: "100vh",
-    },
-  }));
+// function App() {
+//   const useStyles = makeStyles(() => ({
+//     App: {
+//       // backgroundColor: "#14161a",
+//       // color: "white",
+//       minHeight: "100vh",
+//     },
+//   }));
 
-  const classes = useStyles();
-  return (
-    <>
-      {/* <Link to="/phoneSignUp">
-          <div className="d-grid gap-2 mt-3">
-            <Button variant="success" type="Submit" className='w-72'>
-              Sign in with Phone
-            </Button>
-          </div>
-        </Link> */}
+//   const classes = useStyles();
+//   return (
+//     <>
 
-      {/* <Routes>
+//       <div className={classes.App}>
+//         <Header />
+//         <Routes>
+//           <Route path="/" element={<HomePage />} />
+//           <Route path="/coins/:id" element={<CoinPage />} />
+//         </Routes>
+//       </div>
+//     </>
+//   );
+// }
 
-          <Route path="/" element={<PhoneSignUp />}/>
-        </Routes> */}
-      <div className={classes.App}>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/coins/:id" element={<CoinPage />} />
-        </Routes>
+// export default App;
+
+
+
+class App extends React.Component {
+  state={
+    data:{},
+    country:''
+  }
+
+async componentDidMount(){
+  const fetchedData=await fetchData()
+ this.setState({data:fetchedData})
+}
+
+handleCountryChange = async (country) => {
+  console.log(country)
+  const data = await fetchData(country);
+
+  // this.setState({ data, country: country });
+}
+
+
+
+  render() {
+    const {data}=this.state
+
+    return (
+      <div className={styles.container} >
+        <Cards data={data}/>
+        <CountryPicker handleCountryChange={this.handleCountryChange}/>
+        <Chart/>
+      
       </div>
-    </>
-  );
+    );
+  }
 }
 
 export default App;
