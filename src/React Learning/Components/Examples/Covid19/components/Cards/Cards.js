@@ -35,7 +35,7 @@ return 'Loading...'
             <Typography variant="h5">
               <CountUp start={0} end={recovered.value} duration={2.5} separator=","/>
             </Typography>
-            <Typography color="textSecondary">Real date</Typography>
+            <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
             <Typography variant="body2">Number of recoveries from Covid19</Typography>
           </CardContent>
         </Grid>
@@ -47,7 +47,7 @@ return 'Loading...'
             <Typography variant="h5">
               <CountUp start={0} end={deaths.value} duration={2.5} separator=","/>
             </Typography>
-            <Typography color="textSecondary">Real date</Typography>
+            <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
             <Typography variant="body2">Number of deaths caused by Covid19</Typography>
           </CardContent>
         </Grid>
