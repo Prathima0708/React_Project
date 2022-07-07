@@ -1,6 +1,7 @@
 
 import React from "react";
 import {Routes,Route} from 'react-router-dom'
+import Book from "./React Learning/Components/Examples/Book Management System/Book";
 import Navbar from "./React Learning/Components/Examples/Bootstrap/components/Navbar";
 import About from "./React Learning/Components/Examples/Bootstrap/pages/About";
 import Contact from "./React Learning/Components/Examples/Bootstrap/pages/Contact";
@@ -102,14 +103,10 @@ import Dashboard from "./React Learning/Components/Examples/CRUD/pages/Dashboard
 function App(){
   return(
     <>
-    {/* <Navbar/>
-  <Routes>
-<Route path="/" element={<Home/>}/>
-<Route path="/contact" element={<Contact/>}/>
-<Route path="/about" element={<About/>}/>
-  </Routes> */}
+ 
 
-  <Dashboard />
+  {/* <Dashboard /> */}
+  <Book/>
   </>
   )
 }

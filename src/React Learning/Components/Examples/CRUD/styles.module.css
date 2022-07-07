@@ -562,7 +562,7 @@
   }
   
   .container,
-  .small-container,
+  .small_container,
   .medium-container {
     max-width: 1200px;
     padding: 0 1rem;
@@ -570,7 +570,7 @@
     margin-right: auto;
   }
   
-  .small-container {
+  .small_container {
     max-width: 800px;
   }
   
@@ -677,7 +677,7 @@
     text-align: left;
   }
   
-  .text-right {
+  .text_right {
     text-align: right;
   }
   
@@ -868,26 +868,26 @@
     background: #1cb864;
   }
   
-  .muted-button,
-  a.muted-button {
+  .muted_button,
+  a.muted_button {
     background: transparent;
     border: 1px solid #cdcdcd;
     color: #4e4e4e;
   }
   
-  .muted-button:hover,
-  .muted-button:focus,
-  .muted-button:active,
-  a.muted-button:hover,
-  a.muted-button:focus,
-  a.muted-button:active {
+  .muted_button:hover,
+  .muted_button:focus,
+  .muted_button:active,
+  a.muted_button:hover,
+  a.muted_button:focus,
+  a.muted_button:active {
     color: #4e4e4e;
     border: 1px solid #818181;
     background: transparent;
   }
   
-  .round-button,
-  a.round-button {
+  .round_button,
+  a.round_button {
     border-radius: 40px;
   }
   
@@ -1111,16 +1111,16 @@
     color: #ababab;
   }
   
-  .striped-table tbody tr:nth-child(odd) {
+  .striped_table tbody tr:nth-child(odd) {
     background-color: #f8f8f8;
   }
   
-  .contain-table {
+  .contain_table {
     overflow-x: auto;
   }
   
   @media (min-width: 600px) {
-    .contain-table {
+    .contain_table {
       width: 100%;
     }
   }
