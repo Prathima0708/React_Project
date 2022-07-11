@@ -11,6 +11,7 @@ const bookObject={
 const Book = () => {
     const [modal,setModal]=useState(bookObject)
     const [bookList,setBookList]=useState([])
+    const [edit,setEdit]=useState(false)
     const changeHandler=(e)=>{
        const value=e.target.value
        setModal(modal=>({
@@ -21,6 +22,13 @@ const Book = () => {
     console.log(modal)
 
     const addBook=()=>{
+        if (edit){
+
+            const updateBookList=bookList.map((row)=>row.id===modal.id?modal:row)
+            setBookList(updateBookList)
+            setEdit(false)
+            setModal(bookObject)
+        }else{
 let listItems=bookList
 const item={
     id:bookList.length,
@@ -29,10 +37,20 @@ const item={
 }
 listItems=[...bookList,item]
 setBookList(listItems)
+clearData()
     }
+}
     const clearData=()=>{
         setModal(bookObject)
     }
+const deleteRow=(id)=>{
+const filtered=bookList.filter(item=>item.id !== id)
+setBookList(filtered)
+}
+const editRow=(data)=>{
+setModal(data)
+setEdit(true)
+}
   return (
     <>
     <Box sx={{m:2,p:2,border:'1px solid grey'}}>
@@ -40,7 +58,7 @@ setBookList(listItems)
         <TextField label='Book Author' name='authorName' variant='outlined' onChange={changeHandler} fullWidth sx={{mr:2,mb:2}} value={modal.authorName}/>
         <TextField label='Description' name='description' variant='outlined' onChange={changeHandler} fullWidth sx={{mr:2,mb:2}} value={modal.description}/>
         <Box textAlign='center'>
-            <Button variant='contained' color='success' onClick={addBook}>Submit</Button>
+            <Button variant='contained' color='success' onClick={addBook}>{edit ? 'Update':'Submit'}</Button>
             <Button variant='contained' sx={{ml:3}} onClick={clearData}>Clear</Button>
         </Box>
     </Box >
@@ -57,7 +75,7 @@ setBookList(listItems)
     <td>{row.bookName}</td>
     <td>{row.authorName}</td>
     <td>{row.description}</td>
-    <td> <EditIcon/> <DeleteForeverIcon/>  </td>
+    <td> <EditIcon style={{color:'green',cursor:'pointer'}} onClick={()=>editRow(row)}/> <DeleteForeverIcon style={{color:'red',cursor:'pointer'}} onClick={()=>deleteRow(row.id)}/>  </td>
 </tr>
 ))}
     </Table>
