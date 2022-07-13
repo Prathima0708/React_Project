@@ -15,7 +15,7 @@ import { FavoritesContextProvider } from "./React Learning/Components/Udemy_Cour
 import { Provider } from "react-redux";
 import store from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/index";
 import CryptoContext from "./React Learning/Components/Examples/CryptoHunter/context/CryptoContext";
-import "react-alice-carousel/lib/alice-carousel.css";
+
 
 ReactDOM.render(
   // <React.StrictMode>

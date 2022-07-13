@@ -1,8 +1,7 @@
-
 import React from "react";
 
 import { fetchData } from "./React Learning/Components/Examples/Covid19/api";
-import styles from './React Learning/Components/Examples/Covid19/App.module.css'
+import styles from "./React Learning/Components/Examples/Covid19/App.module.css";
 import Cards from "./React Learning/Components/Examples/Covid19/components/Cards/Cards";
 import Chart from "./React Learning/Components/Examples/Covid19/components/Chart/Chart";
 import CountryPicker from "./React Learning/Components/Examples/Covid19/components/CountryPicker/CountryPicker";
@@ -53,37 +52,32 @@ import CountryPicker from "./React Learning/Components/Examples/Covid19/componen
 
 // export default App;
 
-
-
 class App extends React.Component {
-  state={
-    data:{},
-    country:''
+  state = {
+    data: {},
+    country: "",
+  };
+
+  async componentDidMount() {
+    const fetchedData = await fetchData();
+    this.setState({ data: fetchedData });
   }
 
-async componentDidMount(){
-  const fetchedData=await fetchData()
- this.setState({data:fetchedData})
-}
+  handleCountryChange = async (country) => {
+    console.log(country);
+    const data = await fetchData(country);
 
-handleCountryChange = async (country) => {
-  console.log(country)
-  const data = await fetchData(country);
-
-  // this.setState({ data, country: country });
-}
-
-
+    // this.setState({ data, country: country });
+  };
 
   render() {
-    const {data}=this.state
+    const { data } = this.state;
 
     return (
-      <div className={styles.container} >
-        <Cards data={data}/>
-        <CountryPicker handleCountryChange={this.handleCountryChange}/>
-        <Chart/>
-      
+      <div className={styles.container}>
+        <Cards data={data} />
+        <CountryPicker handleCountryChange={this.handleCountryChange} />
+        <Chart />
       </div>
     );
   }
