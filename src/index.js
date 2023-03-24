@@ -16,16 +16,15 @@ import { Provider } from "react-redux";
 import store from "./React Learning/Components/Udemy_Course_Examples/Redux/Example-2/Store/index";
 import CryptoContext from "./React Learning/Components/Examples/CryptoHunter/context/CryptoContext";
 
-
 ReactDOM.render(
   // <React.StrictMode>
 
   <BrowserRouter>
-    <CryptoContext>
-      <App />
+    {/* <CryptoContext> */}
+    <App />
 
-      {/* </React.StrictMode>, */}
-    </CryptoContext>
+    {/* </React.StrictMode>, */}
+    {/* </CryptoContext> */}
   </BrowserRouter>,
 
   document.getElementById("root")

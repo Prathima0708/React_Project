@@ -1,21 +1,21 @@
 
-import NewTodo from './components/NewTodo';
+// import NewTodo from './components/NewTodo';
 
 
-import Todos from './components/Todos';
-import TodosContextProvider from './store/todos.context';
+// import Todos from './components/Todos';
+// import TodosContextProvider from './store/todos.context';
 
 
-function App() {
+// function App() {
  
 
-  return (
-    <TodosContextProvider>
-      <NewTodo />
-     <Todos  />
-     </TodosContextProvider>
+//   return (
+//     <TodosContextProvider>
+//       <NewTodo />
+//      <Todos  />
+//      </TodosContextProvider>
     
-  );
-}
+//   );
+// }
 
-export default App;
+// export default App;
