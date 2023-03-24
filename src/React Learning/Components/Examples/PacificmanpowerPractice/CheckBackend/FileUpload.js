@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import { saveAs } from "file-saver";
 
 const FileUpload = () => {
   //   const [fileName, setFileName] = useState("");
@@ -25,53 +26,7 @@ const FileUpload = () => {
   const fileInputRef = useRef(null);
 
   let api = "http://127.0.0.1:8000/spacificmanpower/userreg/";
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    console.log(file);
-    // Do something with the file
-  };
 
-  // const saveFile = async () => {
-  //   console.log("Button clicked");
-
-  //   // let formData = new FormData();
-  //   // formData.append("name", "abc");
-  //   // formData.append("email", "dfs@gmail.com");
-  //   // formData.append("phone", 675768856);
-  //   // formData.append("resume_file", fileInputRef.current.files[0]);
-  //   const formData = {
-  //     name: "abc",
-  //     email: "dfs@gmail.com",
-  //     phone: 675768856,
-  //     resume_file: fileInputRef.current.files[0], // assuming you have a variable named 'file' that contains the selected file
-  //   };
-
-  //   console.log("formdata before post req", formData);
-
-  //   let headers = {
-  //     "Content-Type": "multipart/form-data",
-  //   };
-
-  //   axios
-  //     .post(api, formData, headers)
-  //     .then((response) => {
-  //       console.log(response);
-  //       setstatus("File Uploaded Successfully");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  //   // try {
-  //   //   const response = await axios.post(api, formData, {
-  //   //     headers: headers,
-  //   //   });
-
-  //   //   console.log(response.data);
-  //   //   setstatus("File Uploaded Successfully");
-  //   // } catch (error) {
-  //   //   console.log(error);
-  //   // }
-  // };
   const saveFile = async () => {
     const formData = new FormData();
     formData.append("name", "abc");
@@ -105,36 +60,19 @@ const FileUpload = () => {
         console.log(error);
       });
   };
+
   const fetchContentType = (url) => {
-    console.log(url);
-    return axios.head(url).then((response) => {
-      return response.headers["content-type"];
-    });
+    return axios
+      .head(url)
+      .then((response) => {
+        console.log("from fetchcontent", response.headers["content-type"]);
+        return response.headers["content-type"];
+      })
+      .catch((error) => console.log(error));
   };
 
-  // const forceDownload = (response, title) => {
-  //   console.log(response);
-  //   const url = window.URL.createObjectURL(new Blob([response.data]));
-  //   const link = document.createElement("a");
-  //   link.href = url;
-  //   link.setAttribute("download", title + ".pdf");
-  //   document.body.appendChild(link);
-  //   link.click();
-  // };
-
-  // const downloadWithAxios = (url, title) => {
-  //   axios({
-  //     method: "get",
-  //     url,
-  //     responseType: "arraybuffer",
-  //   })
-  //     .then((response) => {
-  //       forceDownload(response, title);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
-
   const forceDownload = (response, title, contentType) => {
+    console.log(response, title, contentType);
     if (!response || !response.data) {
       console.error("Response or response data is undefined");
       return;
@@ -163,6 +101,7 @@ const FileUpload = () => {
       })
       .catch((error) => console.log(error));
   };
+
   useEffect(() => {
     getFiles();
     //  console.log(files);
@@ -220,7 +159,7 @@ const FileUpload = () => {
               {files.map((file) => {
                 return (
                   <tr>
-                    <td>{file.resume_file}</td>
+                    <td>{file.resume_file?.split("/").pop()}</td>
                     <td>
                       <a href="" target="_blank"></a>
 
@@ -228,16 +167,39 @@ const FileUpload = () => {
                         // onClick={() =>
                         //   downloadWithAxios(file.resume_file, file.id)
                         // }
+                        // onClick={() => {
+                        //   fetchContentType(file.resume_file).then(
+                        //     (contentType) => {
+                        //       downloadWithAxios(
+                        //         file.resume_file,
+                        //         file.resume_file.split("/").pop(),
+                        //         contentType
+                        //       );
+                        //     }
+                        //   );
+                        // }}
+                        // onClick={() =>
+                        //   downloadFile(
+                        //     `http://127.0.0.1:8000/spacificmanpower/userreg/+${file.resume_file}`,
+                        //     file.resume_file.split("/").pop()
+                        //   )
+                        // }
                         onClick={() => {
-                          fetchContentType(file.resume_file).then(
-                            (contentType) => {
+                          const fileUrl = `http://127.0.0.1:8000${file.resume_file}`;
+                          fetchContentType(fileUrl)
+                            .then((contentType) => {
                               downloadWithAxios(
-                                file.resume_file,
+                                fileUrl,
                                 file.resume_file.split("/").pop(),
                                 contentType
                               );
-                            }
-                          );
+                            })
+                            .catch((error) => {
+                              console.error(
+                                "Error fetching content type:",
+                                error
+                              );
+                            });
                         }}
                         className="btn btn-success"
                       >
