@@ -146,7 +146,7 @@ const FileUpload = () => {
         </div>
 
         <div className="col-md-7">
-          <h2 className="alert alert-success">List of Uploaded Files</h2>
+          <h2 className="alert alert-success">User List</h2>
 
           <table className="table table-bordered mt-4">
             <thead>
@@ -159,7 +159,8 @@ const FileUpload = () => {
               {files.map((file) => {
                 return (
                   <tr>
-                    <td>{file.resume_file?.split("/").pop()}</td>
+                    {/* <td>{file.resume_file?.split("/").pop()}</td> */}
+                    <td>{file.user_name}</td>
                     <td>
                       <a href="" target="_blank"></a>
 
@@ -205,6 +206,8 @@ const FileUpload = () => {
                       >
                         DownLoad
                       </button>
+                      <button    className="btn btn-success">Edit</button>
+                      <button    className="btn btn-danger">Delete</button>
                     </td>
                   </tr>
                 );

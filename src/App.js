@@ -206,6 +206,7 @@ import SMTP from "./React Learning/Components/Examples/Email/SMTP";
 import Download from "./React Learning/Components/Examples/Download/Download";
 import Postreq from "./React Learning/Components/Examples/PacificmanpowerPractice/CheckBackend/Postreq";
 import FileUpload from "./React Learning/Components/Examples/PacificmanpowerPractice/CheckBackend/FileUpload";
+import EditDel from "./React Learning/Components/Examples/PacificmanpowerPractice/CheckBackend/EditDel";
 
 const LazyAbout = React.lazy(() =>
   import(
@@ -228,6 +229,12 @@ function App(props) {
       });
     }
   }, []);
+  const [isLoginForm, setIsLoginForm] = useState(true);
+
+  function toggleForm() {
+    setIsLoginForm(!isLoginForm);
+  }
+
   return (
     <>
       {/* <AuthProvider>
@@ -308,8 +315,23 @@ function App(props) {
       {/* <Contactus /> */}
       {/* <SMTP /> */}
       {/* <Download /> */}
-      <Postreq />
-      <FileUpload />
+      {/* <Postreq />
+      <FileUpload /> */}
+      
+      
+ 
+
+
+
+    <div className="App">
+      {/* <h1>{isLoginForm ? "Login" : "Signup"}</h1>
+      <Postreq isLoginForm={isLoginForm} toggleForm={toggleForm} /> */}
+   <EditDel/>
+      
+    </div>
+
+
+
     </>
   );
 }
