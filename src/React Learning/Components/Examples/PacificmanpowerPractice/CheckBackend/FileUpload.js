@@ -25,14 +25,14 @@ const FileUpload = () => {
   const [status, setstatus] = useState("");
   const fileInputRef = useRef(null);
 
-  let api = "http://127.0.0.1:8000/spacificmanpower/userreg/";
+  let api = "http://127.0.0.1:8000/spacificmanpower/applyjob/";
 
   const saveFile = async () => {
     const formData = new FormData();
-    formData.append("name", "abc");
-    formData.append("email", "asdas@g.com");
-    formData.append("phone", 1234567890);
-    formData.append("resume_file", filename);
+    formData.append("applicant_name", "abc");
+    formData.append("applicant_email", "asdas@g.com");
+    formData.append("descirption", "1234567890");
+    formData.append("uploaded_resume", filename);
     console.log("formdata before post req", formData);
 
     try {
@@ -146,7 +146,7 @@ const FileUpload = () => {
         </div>
 
         <div className="col-md-7">
-          <h2 className="alert alert-success">User List</h2>
+          <h2 className="alert alert-success">Resume List</h2>
 
           <table className="table table-bordered mt-4">
             <thead>
@@ -160,7 +160,7 @@ const FileUpload = () => {
                 return (
                   <tr>
                     {/* <td>{file.resume_file?.split("/").pop()}</td> */}
-                    <td>{file.user_name}</td>
+                    <td>{file.uploaded_resume}</td>
                     <td>
                       <a href="" target="_blank"></a>
 
@@ -186,12 +186,12 @@ const FileUpload = () => {
                         //   )
                         // }
                         onClick={() => {
-                          const fileUrl = `http://127.0.0.1:8000${file.resume_file}`;
+                          const fileUrl = `http://127.0.0.1:8000${file.uploaded_resume}`;
                           fetchContentType(fileUrl)
                             .then((contentType) => {
                               downloadWithAxios(
                                 fileUrl,
-                                file.resume_file.split("/").pop(),
+                                file.uploaded_resume.split("/").pop(),
                                 contentType
                               );
                             })
@@ -206,8 +206,6 @@ const FileUpload = () => {
                       >
                         DownLoad
                       </button>
-                      <button    className="btn btn-success">Edit</button>
-                      <button    className="btn btn-danger">Delete</button>
                     </td>
                   </tr>
                 );

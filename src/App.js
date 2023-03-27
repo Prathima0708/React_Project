@@ -312,7 +312,7 @@ function App(props) {
         </Carousel.Item>
       </Carousel> */}
       {/* <Map google={props.google} initialCenter={currentLocation} zoom={14} /> */}
-      <Contactus />
+      <FileUpload />
       {/* <SMTP /> */}
       {/* <Download /> */}
       {/* <Postreq />
