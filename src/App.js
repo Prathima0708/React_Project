@@ -312,26 +312,19 @@ function App(props) {
         </Carousel.Item>
       </Carousel> */}
       {/* <Map google={props.google} initialCenter={currentLocation} zoom={14} /> */}
-      {/* <Contactus /> */}
+      <Contactus />
       {/* <SMTP /> */}
       {/* <Download /> */}
       {/* <Postreq />
       <FileUpload /> */}
-      
-      
- 
 
-
-
-    <div className="App">
+      {/* 
+    <div className="App"> */}
       {/* <h1>{isLoginForm ? "Login" : "Signup"}</h1>
       <Postreq isLoginForm={isLoginForm} toggleForm={toggleForm} /> */}
-   <EditDel/>
-      
-    </div>
+      {/* <EditDel/> */}
 
-
-
+      {/* </div> */}
     </>
   );
 }
