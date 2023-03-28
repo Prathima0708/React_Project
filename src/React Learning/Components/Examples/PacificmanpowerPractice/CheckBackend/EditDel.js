@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 var ID;
 
 const EditDel = () => {
@@ -11,6 +12,9 @@ const EditDel = () => {
   const [data, setData] = useState([]);
   const [isEdit, setEdit] = useState(false);
   const [showForm, setShowForm] = useState(true);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const [toBeUpdateID, setToBeUpdateId] = useState("");
   const getFiles = () => {
     axios
       .get("http://127.0.0.1:8000/spacificmanpower/userreg/")
@@ -92,19 +96,9 @@ const EditDel = () => {
     setPassword("");
   }
 
-  function deleteItem(id) {
-    console.log("id is", id);
-    alert("Confirm Deletion", "Are you sure you want to delete ?", [
-      {
-        text: "Cancel",
+  function deleteItem() {
+    console.log("id is", toBeUpdateID);
 
-        style: "cancel",
-      },
-      {
-        text: "Delete",
-        onPress: () => deleteData(),
-      },
-    ]);
     async function deleteData() {
       try {
         let headers = {
@@ -112,19 +106,26 @@ const EditDel = () => {
         };
 
         const resLogin = await axios.delete(
-          `http://127.0.0.1:8000/spacificmanpower/userreg/${id}/`,
+          `http://127.0.0.1:8000/spacificmanpower/userreg/${toBeUpdateID}/`,
 
           {
             headers: headers,
           }
         );
+        if (resLogin.status === 204) {
+          setShow(false);
+          console.log("deleted");
+        }
       } catch (error) {
         console.log(error);
       }
     }
-     deleteData();
+    deleteData();
   }
-
+  function deleteBtnHandler(id) {
+    setShow(true);
+    setToBeUpdateId(id);
+  }
   return (
     <>
       {isEdit && (
@@ -176,28 +177,44 @@ const EditDel = () => {
           <tbody>
             {data.map((file) => {
               return (
-                <tr>
-                  {/* <td>{file.resume_file?.split("/").pop()}</td> */}
-                  <td>{file.user_name}</td>
-                  <td>
-                    <button
-                      className="btn btn-success"
-                      onClick={() => editItem(file.id)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => deleteItem(file.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                <>
+                  <tr>
+                    {/* <td>{file.resume_file?.split("/").pop()}</td> */}
+                    <td>{file.user_name}</td>
+                    <td>
+                      <button
+                        className="btn btn-success"
+                        onClick={() => editItem(file.id)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => deleteBtnHandler(file.id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </>
               );
             })}
           </tbody>
         </table>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              No
+            </Button>
+            <Button variant="primary" onClick={deleteItem}>
+              Yes
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </>
   );

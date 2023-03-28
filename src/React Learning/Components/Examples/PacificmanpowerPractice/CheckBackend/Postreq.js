@@ -85,26 +85,28 @@
 
 // export default Postreq;
 
-
-
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-var ID
+import Modal from "react-bootstrap/Modal";
+import bcrypt from "bcryptjs";
+import Swal from "sweetalert2";
+var ID;
 
 function Postreq(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [data, setData] = useState([]);
-const [isEdit,setEdit]=useState(false)
-const [showForm,setShowForm]=useState(true)
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  //const handleShow = () => setShow(true);
   const getFiles = () => {
     axios
-      .get('http://127.0.0.1:8000/spacificmanpower/userreg/')
+      .get("http://127.0.0.1:8000/spacificmanpower/userreg/")
       .then((response) => {
         console.log(response.data);
         setData(response.data);
@@ -116,6 +118,18 @@ const [showForm,setShowForm]=useState(true)
   useEffect(() => {
     getFiles();
     //  console.log(files);
+  }, []);
+
+  useEffect(() => {
+    async function getItem() {
+      try {
+        const value = await localStorage.getItem("userid");
+        console.log("value is", value);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getItem();
   }, []);
 
   function handleEmailChange(event) {
@@ -134,17 +148,20 @@ const [showForm,setShowForm]=useState(true)
   //   setPhone(event.target.value);
   // }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
     event.preventDefault();
     if (props.isLoginForm) {
-      // handle login form submit
       console.log("Logging in...");
       async function storeData() {
+        console.log("hashed pwd", hashedPassword);
         const formData = {
           user_name: name,
-         // email: email,
-         
-          password:password,
+          email: email,
+          active: "",
+          password: hashedPassword,
         };
         try {
           let headers = {
@@ -159,7 +176,6 @@ const [showForm,setShowForm]=useState(true)
           if (res.data.message) {
             console.log("Invalid username or password");
             // do something to log the user in, e.g. redirect to a dashboard page
-          
           } else {
             console.log("User authenticated");
           }
@@ -167,98 +183,103 @@ const [showForm,setShowForm]=useState(true)
           console.log(e);
         }
       }
-      storeData()
+      storeData();
+      window.alert("saved successfully");
     } else {
       // handle signup form submit
       console.log("Signing up...");
-          async function storeData() {
-      const formData = {
-        user_name: name,
-        email: email,
-       
-        password:password,
-      };
-      try {
-        let headers = {
-          "Content-Type": "application/json; charset=utf-8",
+      async function storeData() {
+        const formData = {
+          user_name: name,
+          email: email,
+          active: false,
+          password: hashedPassword,
         };
-        const res = await axios.post(
-          "http://127.0.0.1:8000/spacificmanpower/userreg/",
-          formData,
-          { headers: headers }
-        );
-        console.log(res.data);
-        if (res.data.message) {
-          console.log("Invalid username or password");
-          // do something to log the user in, e.g. redirect to a dashboard page
-        
+        try {
+          let headers = {
+            "Content-Type": "application/json; charset=utf-8",
+          };
+          const res = await axios.post(
+            "http://127.0.0.1:8000/spacificmanpower/userreg/",
+            formData,
+            { headers: headers }
+          );
+          console.log(res.data);
+
+          try {
+            await localStorage.setItem("userid", res.data.id);
+          } catch (error) {}
+          if (res.status === 201) {
+            console.log("success");
+            setShow(true);
+            // do something to log the user in, e.g. redirect to a dashboard page
+          } else {
+            console.log("User authenticated");
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
+
+      storeData();
+
+      setName("");
+      setEmail("");
+      setPassword("");
+      //setPhone("");
+    }
+  }
+
+  function delKey() {
+    async function delItem() {
+      try {
+        const value = await localStorage.removeItem("userid");
+        if (value == null) {
+          console.log("Data removed");
         } else {
-          console.log("User authenticated");
+          console.log("Data not removed");
         }
       } catch (e) {
-        console.log(e);
+        console.log("error", e);
       }
     }
-    storeData();
-    setName("");
-    setEmail("");
-    //setPhone("");
-    }
+    delItem();
   }
-
-  function editItem(id) {
-    setEdit(true);
-    setShowForm(false)
- 
-    ID = id;
-
-    const filteredDummuyData = data.find((data) => data.id === id);
-
-    setName(filteredDummuyData.user_name);
-    setEmail(filteredDummuyData.email);
-
-    setPassword(filteredDummuyData.password);
-   
-   
-    
-  }
-
   return (
     <>
-    <Form onSubmit={handleSubmit}>
-      {!props.isLoginForm && (
-        <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
+      <Form onSubmit={handleSubmit}>
+        {!props.isLoginForm && (
+          <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter name"
+              value={name}
+              onChange={handleNameChange}
+            />
+          </Form.Group>
+        )}
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Enter name"
-            value={name}
-            onChange={handleNameChange}
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={handleEmailChange}
           />
         </Form.Group>
-      )}
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-      </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </Form.Group>
-     
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </Form.Group>
 
-      {/* {!props.isLoginForm && (
+        {/* {!props.isLoginForm && (
         <Form.Group className="mb-3" controlId="formBasicPhone">
           <Form.Label>Phone</Form.Label>
           <Form.Control
@@ -270,29 +291,52 @@ const [showForm,setShowForm]=useState(true)
         </Form.Group>
       )} */}
 
-      <Button variant="primary" type="submit">
-        {props.isLoginForm ? "Login" : "Signup"}
-      </Button>
+        <Button variant="primary" type="submit">
+          {props.isLoginForm ? "Login" : "Signup"}
+        </Button>
 
-      <div>
-        {props.isLoginForm ? (
-          <div>
-            Don't have an account?{" "}
-            <Link onClick={props.toggleForm} to="/signup">
-              Signup
-            </Link>
-          </div>
-        ) : (
-          <div>
-            Already have an account?{" "}
-            <Link onClick={props.toggleForm} to="/login">
-              Login
-            </Link>
-          </div>
-        )}
-      </div>
-    </Form>
-   
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Data saved Successfully</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleClose}>
+              Okay
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        <div>
+          {props.isLoginForm ? (
+            <div>
+              Don't have an account?{" "}
+              <Link onClick={props.toggleForm} to="/signup">
+                Signup
+              </Link>
+            </div>
+          ) : (
+            <div>
+              Already have an account?{" "}
+              <Link onClick={props.toggleForm} to="/login">
+                Login
+              </Link>
+            </div>
+          )}
+        </div>
+        <button onClick={delKey}>delete key</button>
+        {/* <h1>Subscribe</h1>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </Form.Group>
+        <button className="border-4">subscribe</button> */}
+      </Form>
     </>
   );
 }

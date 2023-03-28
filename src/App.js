@@ -207,6 +207,7 @@ import Download from "./React Learning/Components/Examples/Download/Download";
 import Postreq from "./React Learning/Components/Examples/PacificmanpowerPractice/CheckBackend/Postreq";
 import FileUpload from "./React Learning/Components/Examples/PacificmanpowerPractice/CheckBackend/FileUpload";
 import EditDel from "./React Learning/Components/Examples/PacificmanpowerPractice/CheckBackend/EditDel";
+import FilterJobs from "./React Learning/Components/Examples/PacificmanpowerPractice/FilterJobs";
 
 const LazyAbout = React.lazy(() =>
   import(
@@ -312,19 +313,18 @@ function App(props) {
         </Carousel.Item>
       </Carousel> */}
       {/* <Map google={props.google} initialCenter={currentLocation} zoom={14} /> */}
-      <FileUpload />
+      {/* <Contactus /> */}
       {/* <SMTP /> */}
       {/* <Download /> */}
       {/* <Postreq />
       <FileUpload /> */}
 
-      {/* 
-    <div className="App"> */}
-      {/* <h1>{isLoginForm ? "Login" : "Signup"}</h1>
-      <Postreq isLoginForm={isLoginForm} toggleForm={toggleForm} /> */}
-      {/* <EditDel/> */}
-
-      {/* </div> */}
+      <div className="App">
+        {/* <h1>{isLoginForm ? "Login" : "Signup"}</h1> */}
+        {/* <Postreq isLoginForm={isLoginForm} toggleForm={toggleForm} /> */}
+        {/* <EditDel /> */}
+        <FilterJobs />
+      </div>
     </>
   );
 }

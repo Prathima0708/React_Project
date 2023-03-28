@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import emailjs from "@emailjs/browser";
 
 function Contactus() {
+  const [email, setEmail] = useState("");
   const form = useRef();
 
   // const sendEmail = (e) => {
@@ -64,6 +65,9 @@ function Contactus() {
 
   //   e.target.reset();
   // };
+  function handleEmailChange(event) {
+    setEmail(event.target.value);
+  }
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -113,15 +117,30 @@ function Contactus() {
   };
 
   return (
-    <form ref={form} onSubmit={sendEmail}>
-      <label>Name</label>
-      <input type="text" name="recipient_name" />
-      <label>Email</label>
-      <input type="text" name="event_name" />
-      <label>Message</label>
-      <textarea name="event_date" />
-      <input type="submit" value="Send" />
-    </form>
+    <>
+      <h1>Subscribe</h1>
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </Form.Group>
+        <button className="border-4">subscribe</button>
+      </Form>
+    </>
+    // <form ref={form} onSubmit={sendEmail}>
+    //   <label>Name</label>
+    //   <input type="text" name="recipient_name" />
+    //   <label>Email</label>
+    //   <input type="text" name="event_name" />
+    //   <label>Message</label>
+    //   <textarea name="event_date" />
+    //   <input type="submit" value="Send" />
+    // </form>
   );
 }
 
